@@ -1,0 +1,41 @@
+// Place all the styles related to the People controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$mainwidth: 960px;
+$margin: 10px;
+$blue: #3bbfce;
+$bordersize: 2px;
+
+#person_basic.grid1 {
+	width: $mainwidth / 2;
+	padding: $margin / 4;
+	margin-left: $margin;
+	margin-right: $margin;
+}
+
+#person_basic.grid1 .form form {
+	width: 100%;
+	border-size: $bordersize;
+	border-color: $blue; 
+}
+
+#person_basic.grid1 .form form div {
+	float: left;
+	margin: $margin;
+}
+
+#person_basic.grid1 .form form div label {
+	display: block;
+}
+#person_basic.grid1 .form form div input {
+	display: inline;
+}
+
+#person_basic.grid1 .form form div div.choices {
+	float: none;
+}
+
+#person_basic.grid1 .form form div div.choices label {
+	display: inline;
+}

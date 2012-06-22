@@ -1,0 +1,84 @@
+<p id="notice"><%= notice %></p>
+<% if @people %>
+	<% @people.each do |person| %>
+		<div class="grid<%= @person.id %>">
+			<p>
+				<%= person.first_name %><br />
+				<%= person.middle_name %><br />
+				<%= person.last_name %>
+				&apos;<%= person.nickname %>&apos;
+			</p>
+			<br/>
+			<p>
+				<h3>Details</h3>
+				<%= person.gender %><br/>
+				<%= person.race %>
+				<%= person.person_type %>
+			</p>
+			
+			<p>
+				<h2>Notes</h2>
+				<% person.notes.each do |note| %>
+					<p>
+						<%= note.content %>
+						<br/>
+						<%= label note, :_destroy, "Remove" %>
+						<%= check_box note, :_destroy %>
+					</p>
+				<% end %>
+			
+			</p>
+		</div>
+	<% end %>
+<% else %>
+	<div class="grid<%= @person.id %>">
+		<p>
+			<%= @person.first_name %><br />
+			<%= @person.middle_name %><br />
+			<%= @person.last_name %>
+			&apos;<%= @person.nickname %>&apos;
+		</p>
+		<br/>
+		<p>
+			<h3>Details</h3>
+			<%= @person.gender %><br/>
+			<%= @person.race %>
+			<%= @person.person_type %>
+		</p>
+		<p>
+			<%= @person.addresses.each do |a| %>
+				<div class="fields">
+					<p>Street Address:<br />
+						<%= a.content %>
+					</p>
+					<p>
+						City: <br />
+						<%= a.city %>
+					</p>
+					<p>State: <br />
+						<%= a.state %>
+					</p>
+					<p>
+						Country: <br/>
+						<%= a.country %>
+					</p>
+				</div>
+			<% end %>
+		</p>
+		<p>
+			<h2>Notes</h2>
+			<% @person.notes.each do |note| %>
+				<p>
+					<%= note.content %>
+					<br/>
+					<%= label note, :_destroy, "Remove" %>
+					<%= check_box note, :_destroy %>
+				</p>
+			<% end %>
+			<%= form_for @person do |person_form| %>
+				<%= render :partial => 'notes/form', :locals => { :form => person_form } %>
+				<%= person_form.submit "Create note" %>
+			<% end %>
+		</p>
+	</div>
+<% end %>

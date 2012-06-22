@@ -1,0 +1,9 @@
+<h1>Current Funding Records by Fund</h1>
+<p>Fund = Funding.find(:all)</p>
+
+<div class="grid2">
+	<p>List of Funds</p>
+	<ul>
+		<%= render :partial => 'listing', :object => @fundings %>
+	</ul>
+</div>

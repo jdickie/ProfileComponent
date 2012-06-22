@@ -1,0 +1,10 @@
+<% # Generic form for Emails - put all necessary fields here %>
+<%= form.fields_for :emails, email do |email_form| %>
+	
+	<% unless email_form.object.nil? || email_form.object.new_record? %>
+		<div class="field">
+			<%= email_form.label :_destroy, 'Remove:' %>
+			<%= email_form.check_box :_destroy %>
+		</div>
+	<% end %>
+<% end %>

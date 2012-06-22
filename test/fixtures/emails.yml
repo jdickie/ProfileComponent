@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+email_grant_work: 
+    id: 1
+    uri: jdickie@umd.edu
+    email_type: Work
+    person_id: 122000
+    
+email_grant_work2: 
+    id: 2
+    uri: jgrantd@gmail.com
+    email_type: Work
+    person_id: 122000
+    
+email_megan_work: 
+    id: 3
+    uri: weng@umd.edu
+    email_type: Work
+    person_id: 233000

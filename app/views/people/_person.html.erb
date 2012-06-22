@@ -1,0 +1,72 @@
+<% # Person form -- use to fill out new and edit records %>
+<%= form_for @person do |p| %>
+	<div id="person_type" class="field">
+		<%= p.label(:person_type, "This person is a: ") %>
+		<%= p.label(:person_type, "Faculty:") %>
+		<%= p.radio_button("person_type", "Faculty") %>
+		<%= p.label(:person_type, "Staff:") %>
+		<%= p.radio_button("person_type", "Staff") %>
+		<%= p.label(:person_type, "Graduate-Student:") %>
+		<%= p.radio_button("person_type", "Graduate Student") %>
+		<%= p.label(:person_type, "Donor:") %>
+		<%= p.radio_button("person_type", "Donor") %>
+	</div>
+	<div id="person_info" class="field">
+		<%= p.label(:first_name, "First Name") %>
+		<%= p.text_field :first_name %>
+		<%= p.label(:last_name, "Last Name/Family Name") %>
+		<%= p.text_field(:last_name) %>
+		<%= p.label(:middle_name, "Middle Name (Optional)") %>
+		<%= p.text_field(:middle_name) %>
+		<%= p.label(:nickname, "Nickname (Optional)") %>
+		<%= p.text_field(:nickname) %>
+		<%= p.label(:date_of_birth, "Date of birth") %>
+		<%= date_select(:person, :date_of_birth, { :start_year => 1900, :default => { :day => 1, :year => 1980, :month => 1 } }) %>
+	</div>
+	<div id="person_sensitive" class="field">
+		<%= p.label(:gender, "Gender") %>
+		<div class="choices">
+			<%= p.label(:gender, "Male") %>
+			<%= p.radio_button("gender", "Male") %>
+			<%= p.label(:gender, "Female") %>
+			<%= p.radio_button("gender", "Female") %>
+		</div>
+		<%= p.label(:race, "Race") %>
+		<div class="choices">
+			<%= p.label(:race, "Alaska Native") %>
+			<%= p.radio_button("race", "Alaska Native") %>
+			<%= p.label(:race, "African-American") %>
+			<%= p.radio_button("race", "African-American") %>
+			<%= p.label(:race, "Black") %>
+			<%= p.radio_button("race", "Black") %>
+			<%= p.label(:race, "Asian") %>
+			<%= p.radio_button("race", "Asian") %>
+			<%= p.label(:race, "Latino") %>
+			<%= p.radio_button("race", "Latino") %>
+			<%= p.label(:race, "Hispanic") %>
+			<%= p.radio_button("race", "Hispanic") %>
+			<%= p.label(:race, "White") %>
+			<%= p.radio_button("race", "White") %>
+		</div>
+		<%= p.label(:spouse_name, "Spouse Name - first and last (If applicable)")%>
+		<%= p.text_field(:spouse_name) %>
+	</div>
+	<div id="person_address" class="field">
+		<%= p.fields_for :addresses do |builder| %>
+			<%= render "person_address", :p => builder %>
+		<% end %>
+	</div>
+	<div id="person_email" class="field">
+		<%= p.fields_for :emails do |builder| %>
+			<%= render "person_email", :p => builder %>
+		<% end %>
+	</div>
+	<div id="person_telephone" class="field">
+		<%= p.fields_for :telephones do |builder| %>
+			<%= render '_person_telephone', :p => builder %>
+		<% end %>
+	</div>
+	<div class="actions">
+		<%= p.submit "Create" %>
+	</div>
+<% end %>

@@ -1,0 +1,25 @@
+<h2>Enter an address</h2>
+<%= form.fields_for :addresses, address do |address_form| %>
+	<div class="field">
+		<h3><%= address_form.label(:address_type, "Type of Address") %></h3>
+		<div class="choices">
+			<%= address_form.label(:address_type, "Work") %>
+			<%= address_form.radio_button("address_type", "Work") %>
+			<%= address_form.label(:address_type, "Home") %>
+			<%= address_form.radio_button("address_type", "Home") %>
+		</div>
+	</div>
+	<div class="field">
+		<h3>Details</h3>
+		<%= address_form.label(:content, "Street, Number, Apartment, etc") %>
+		<%= address_form.text_field(:content) %>
+		<%= address_form.label(:city, "City") %>
+		<%= address_form.text_field(:city) %>
+		<%= address_form.label(:state, "State") %>
+		<%= address_form.text_field(:state) %>
+		<%= address_form.label(:zip_code, "U.S. Postal Zip Code") %>
+		<%= address_form.text_field(:zip_code) %>
+		<%= address_form.label(:country, "Country of residence") %>
+		<%= address_form.text_field(:country) %>
+	</div>
+<% end %>

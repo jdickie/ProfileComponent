@@ -1,0 +1,36 @@
+/** CSS styling for 960 grid system **/
+body {
+	background-color: #00B8F5;
+	margin: 0;
+	padding: 0;
+}
+
+body .main {
+	background-color: #3D00F5;
+	width: 960px;
+	padding: 1em;
+}
+
+.grid1, .grid2, .grid3 {
+	margin-right: 10px;
+	margin-left: 10px;
+	padding: 0;
+	float: left;
+	position: relative;
+}
+
+.grid1 {
+	width: 260px;
+}
+.grid2 {
+	width: 340px;
+	background: #00C8F5;
+}
+.grid2 div {
+	padding-left: .5em;
+	margin-top:10px;
+}
+
+.grid3 {
+	width: 660px;
+}

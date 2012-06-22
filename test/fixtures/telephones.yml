@@ -1,0 +1,23 @@
+# Generating YAML fixture for testing the Telephones table
+# 
+# Data is used in conjunction with people, emails, addresses, emergency contacts, and 
+# notes
+# 
+# See the people_test.rb in test/unit for usage
+# 
+# auto-generating IDs, but intentionally supplying person_id column for each
+# record
+grant_phone:
+    number: 8005555555
+    telephone_type: Work
+    person_id: 122000
+    
+megan_phone:
+    number: 8005555556
+    telephone_type: Home
+    person_id: 233000
+    
+megan_phone_2:
+    number: 8995559999
+    telephone_type: Work
+    person_id: 233000

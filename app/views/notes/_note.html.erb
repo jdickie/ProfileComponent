@@ -1,0 +1,9 @@
+<%= form_for @note do |note_form| %>
+	<div class='fields'>
+		<%= note_form.label :title, "Title: " %>
+		<%= note_form.text_field :title %>
+		<%= note_form.label :content, "Write your note here: " %><br />
+		<%= note_form.text_area :content, :cols=> 10, :rows => 20 %>
+	</div>
+	<%= note_form.submit "Create Note" %>
+<% end %>

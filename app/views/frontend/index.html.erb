@@ -1,0 +1,27 @@
+<div class="main">
+	<div class="grid1">
+		<h2>Profile Component Prototype</h2>
+		<p>Designing the Models for the Profile Component</p>
+	</div>
+	<div class="grid2">
+		<% for person in @people %>
+			<div class ="person_list">
+				<h2><%= person.last_name %>, <%= person.first_name %></h2>
+				<p><%= person.gender %></p>
+				<p>Address</p>
+				<%= render :partial => 'addresses', :object => person.addresses %>
+				
+				
+				<%= link_to 'edit', people_path(person), :method => :edit %>
+				<%= link_to 'delete me', people_path(person), :confirm => 'Are you sure?', :method => :delete %>
+				
+			</div>
+		<% end %>
+	</div>
+	<div class="grid3">
+		<span><%= link_to 'add a person', new_people_path %></span>
+	</div>
+</div>
+<div class="footer">
+	<p>Created by Grant Dickie</p>
+</div>	

@@ -1,0 +1,26 @@
+<div class="form">
+<%= form_tag(:controller => 'address', :action => 'update', :id => @address) %>
+	<div class="field">
+		<h3><%= label(:address, :address_type, "Type of Address") %></h3>
+		<div class="choices">
+			<%= label(:address, :address_type, "Work") %>
+			<%= radio_button("address", "address_type", "Work") %>
+			<%= label(:address, :address_type, "Home") %>
+			<%= radio_button("address", "address_type", "Home") %>
+		</div>
+	</div>
+	<div class="field">
+		<h3>Details</h3>
+		<%= label(:address, :content, "Street, Number, Apartment, etc") %>
+		<%= text_field(:address, :content) %>
+		<%= label(:address, :city, "City") %>
+		<%= text_field(:address, :city) %>
+		<%= label(:address, :state, "State") %>
+		<%= text_field(:address, :state) %>
+		<%= label(:address, :zip_code, "U.S. Postal Zip Code") %>
+		<%= text_field(:address, :zip_code) %>
+		<%= label(:address, :country, "Country of residence") %>
+		<%= text_field(:address, :country) %>
+	</div>
+<% end %>
+</div>

@@ -1,0 +1,29 @@
+# Generating YAML fixture for testing the Addresses table
+# 
+# Data is used in conjunction with people, emails, telephones, emergency contacts, and 
+# notes
+# 
+# See the people_test.rb in test/unit for usage
+# 
+# auto-generating IDs, but intentionally supplying person_id column for each
+# record
+grant_address:
+    address_type: Work
+    content: 94 Washington way
+    city: Washington
+    state: DC
+    person_id: 122000
+    
+megan_address:
+    address_type: Work
+    content: 88 Washington Way
+    city: Washington
+    state: DC
+    person_id: 233000
+    
+megan_address_2:
+    address_type: Home
+    content: 11 Circle Dr
+    city: Damascus
+    state: MD
+    person_id: 233000
