@@ -3,9 +3,3 @@
 		<%= render "person" %>
 	</div>
 </div>
-<div class="grid2">
-	<div class="form">
-		<% @note = Note.new %>
-		<%= render :partial => 'notes/note', :locals => { :item_id => @person.id, :item_type => 'Person' } %>
-	</div>
-</div>

@@ -1,22 +1,7 @@
-<div class="field">
-	<h3><%= p.label(:address_type, "Type of Address") %></h3>
-	<div class="choices">
-		<%= p.label(:address_type, "Work") %>
-		<%= p.radio_button("address_type", "Work") %>
-		<%= p.label(:address_type, "Home") %>
-		<%= p.radio_button("address_type", "Home") %>
-	</div>
-</div>
-<div class="field">
-	<h3>Details</h3>
-	<%= p.label(:content, "Street, Number, Apartment, etc") %>
-	<%= p.text_field(:content) %>
-	<%= p.label(:city, "City") %>
-	<%= p.text_field(:city) %>
-	<%= p.label(:state, "State") %>
-	<%= p.text_field(:state) %>
-	<%= p.label(:zip_code, "U.S. Postal Zip Code") %>
-	<%= p.text_field(:zip_code) %>
-	<%= p.label(:country, "Country of residence") %>
-	<%= p.text_field(:country) %>
-</div>
+<h3>Address</h3>
+<%= p.inputs do %>
+	<%= p.input :address_type, :label => "Type of Address", :as => :radio, :collection => ["Work", "Home"] %>
+	<%= p.input :content, :label => "Street Address, complete with Apartment or Unit number (If applicable)" %>
+	<%= p.input :city %>
+	<%= p.input :state %>
+<% end %>

@@ -5,3 +5,10 @@
 #
 # See test/unit/notes_test.rb for usage
 
+note1:
+    title: Grant Note
+    content: This is a note about Grant
+    
+note2:
+    title: Another Grant Note
+    content: Note on Grant again

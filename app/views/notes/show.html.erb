@@ -1,0 +1,17 @@
+<div class="messages grid1">
+<%= @message %>
+</div>
+<div class="notes grid2">
+	<% if @notes %>
+		<% @notes.each do |note| %>
+			<p>
+				<%= note.content %>
+				</p>
+		
+		<% end %>
+	
+	<% else %>
+	
+		<%= @note.content %>
+	<% end %>
+</div>

@@ -2,6 +2,7 @@ class PeopleController < ApplicationController
  
   def new
     @person = Person.new
+    @person.notes.build
     
     address = @person.addresses.build
     email = @person.emails.build
@@ -12,12 +13,16 @@ class PeopleController < ApplicationController
     if params[:id]
       @person = Person.find(params[:id])
       respond_to do |format|
-        format.html # show.html.erb
+        format.html { redirect_to "people/#{@person.id}" }
       end
     else 
       @people = Person.find(:all)
       respond_to do |format|
-        format.html # show.html.erb
+        if @people
+          format.html # show.html.erb
+        else
+          format.html { redirect_to "people", :message => "Error displaying data" } 
+        end 
       end
     end
     
@@ -32,7 +37,7 @@ class PeopleController < ApplicationController
      
      respond_to do |format|
        if @person.save
-         format.html { redirect_to :action => 'show', :notice => "Person was successfully saved" }
+         format.html { redirect_to "people/#{@person.id}" }
          format.json { render :nothing }
          format.xml { render :nothing }
        else 

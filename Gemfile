@@ -23,6 +23,8 @@ end
 
 gem 'jquery-rails'
 
+gem 'formtastic', :git => 'git://github.com/justinfrench/formtastic.git'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

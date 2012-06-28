@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 <% if @people %>
 	<% @people.each do |person| %>
-		<div class="grid<%= @person.id %>">
+		<div class="grid<%= person.id %>">
 			<p>
 				<%= person.first_name %><br />
 				<%= person.middle_name %><br />
@@ -74,10 +74,6 @@
 					<%= label note, :_destroy, "Remove" %>
 					<%= check_box note, :_destroy %>
 				</p>
-			<% end %>
-			<%= form_for @person do |person_form| %>
-				<%= render :partial => 'notes/form', :locals => { :form => person_form } %>
-				<%= person_form.submit "Create note" %>
 			<% end %>
 		</p>
 	</div>

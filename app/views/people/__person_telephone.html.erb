@@ -1,10 +1,4 @@
-<p>
-	<%= p.label :telephone_type, "Work" %>
-	<%= p.radio_button :telephone_type, "Work" %><br/>
-	<%= p.label :telephone_type, "Home" %>
-	<%= p.radio_button :telephone_type, "Home" %><br/>
-</p>
-<p>
-	<%= p.label :number, "Number - No dashes" %>
-	<%= p.text_field :number, :length => 14 %><br/>
-</p>
+<%= p.inputs do %>
+	<%= p.input :telephone_type, :as => :radio, :collection => ["Home", "Work"] %>
+	<%= p.input :number %>
+<% end %>

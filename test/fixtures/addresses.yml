@@ -27,3 +27,23 @@ megan_address_2:
     city: Damascus
     state: MD
     person_id: 233000
+
+
+trevor_address: 
+    address_type: Home
+    content: 77 Offel St  
+    city: Silver Spring
+    state: MD
+    person_id: 773999
+    
+   #  Address.create :content => '', :city => 'Silver Spring', :state => 'MD',
+   #   :person_id => 3
+   # 
+   # Address.create :content => '28 Campus Dr', :city => 'College Park', :state => 'MD',
+   #   :person_id => 3
+   # 
+   # Address.create :content => '39 Campus Dr', :city => 'College Park', :state => 'MD',
+   #   :person_id => 4
+   # 
+   # Address.create :content => '66 Campus Dr', :city => 'College Park', :state => 'MD',
+   #   :person_id => 5

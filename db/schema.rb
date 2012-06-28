@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(:version => 20120622180510) do
 
   create_table "emails", :force => true do |t|
     t.string   "email_type", :default => "Work"
-    t.string   "uri"
+    t.string   "uri", :unique => true
     t.integer  "person_id"
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false

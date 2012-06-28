@@ -1,0 +1,12 @@
+<%= semantic_form_for @note do |note_form| %>
+	<%= note_form.inputs :title, :content %>
+	<div class="field">
+		<%= note_form.inputs :as => :select, :name => "Person #%i", :for => :people %>
+	</div>
+	<div class="field">
+		<%= note_form.actions do %>
+			<%= note_form.action :submit, :button_html => { :class => "button" }, :label => "Create" %>
+			<%= note_form.action :cancel, :button_html => { :class => "button" }, :label => "Cancel" %>
+		<% end %>
+	</div>
+<% end %>

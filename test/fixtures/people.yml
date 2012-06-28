@@ -12,6 +12,7 @@ grant:
     date_of_birth: Tue Jun 12 12:45:46 -0400 2012
     race: White
     gender: Male
+    nickname: Grant
     
 megan:
     id: 233000
@@ -21,4 +22,32 @@ megan:
     date_of_birth: Tue Jun 12 12:45:46 -0400 2012
     race: Asian
     gender: Female
+
+trevor:
+    id: 773999
+    last_name: Parry-Giles
+    first_name: Trevor
+    date_of_birth: <%= Date.today - 5 %>
+    race: White
+    gender: Male
+    nickname: Trevor
+
+nicky: 
+    id: 898092
+    last_name: Everette
+    first_name: Monique
+    middle_name: Shee
+    date_of_birth: <%= Date.today - 168 %>
+    race: African-American
+    gender: Female
+    nickname: Nicky
     
+christopher: 
+    id: 890800
+    last_name: Perez
+    first_name: Christopher
+    middle_name: A
+    date_of_birth: <%= Date.today - 168 %>
+    race: White
+    gender: Male
+    nickname: Chris

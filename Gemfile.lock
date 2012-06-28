@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/justinfrench/formtastic.git
+  revision: 182b95411c28c0ee824456591a69dd1452bcc2d2
+  specs:
+    formtastic (2.2.1)
+      actionpack (>= 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -104,6 +111,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
+  formtastic!
   jquery-rails
   json
   rails (= 3.2.3)

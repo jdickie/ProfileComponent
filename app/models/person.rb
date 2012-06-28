@@ -4,8 +4,8 @@ class Person < ActiveRecord::Base
  
  @VALID_GENDERS = 'Male Female'
  @VALID_GENDERS_HASH = %w(Male Female)
- @VALID_RACES = 'African-American Black Asian Native American Alaska Native White Hispanic Latino'
- @VALID_PERSON_TYPES = 'Faculty Staff Graduate-Student Donor'
+ @VALID_RACES = 'African-American Black Asian Native-American Alaska-Native White Hispanic Latino'
+ @VALID_PERSON_TYPES = 'Faculty Staff Graduate-Student Undergraduate-Student Donor'
  
  has_many :emails, :dependent => :destroy
  has_many :addresses, :dependent => :destroy

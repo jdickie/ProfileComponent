@@ -20,6 +20,7 @@ Profile::Application.routes.draw do
   # Keep in mind you can assign values other than :controller and :action
   match 'people/edit/:id', :to => 'people#edit', :as => :person
   match 'people/:id', :to => 'people#show'
+  match 'people', :to => 'people#show', :as => :people
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase

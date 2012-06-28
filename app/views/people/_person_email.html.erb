@@ -1,7 +1,4 @@
-<%= p.label :uri, "Email Address" %>
-<%= p.text_field :uri, :length => 256 %>
-<%= p.label :email_type, "Type of Email" %>
-<%= p.label :email_type, "Work" %>
-<%= p.radio_button :email_type, "Work" %><br />
-<%= p.label :email_type, "Home" %>
-<%= p.radio_button :email_type, "Home" %>
+<%= p.inputs do %>
+	<%= p.input :uri, :label => "Email Address" %>
+	<%= p.input :email_type, :as => :radio, :collection => ["Home", "Work"] %>
+<% end %>

@@ -1,7 +1,11 @@
 class NotesController < ApplicationController
+  def get_all_model_items 
+    @all_items = Person.find(:all)
+  end
+  
   def new 
     @note = Note.new
-    
+    get_all_model_items
   end
   
   def show 
@@ -17,9 +21,12 @@ class NotesController < ApplicationController
       end
     end
   end
-    
+  
+  
+  
   def create 
     @note = Note.new(params[:note])
+    
     
     if params[:item_type] && params[:item_type] == 'Person'
       @person = Person.find(params[:item_id])

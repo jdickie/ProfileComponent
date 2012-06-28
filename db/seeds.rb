@@ -27,18 +27,7 @@
   Address.create :content => '88 Tipple St', :city => 'Silver Spring', :state => 'MD',
     :person_id => 2
 
-  Address.create :content => '77 Offel St', :city => 'Silver Spring', :state => 'MD',
-    :person_id => 3
-
-  Address.create :content => '28 Campus Dr', :city => 'College Park', :state => 'MD',
-    :person_id => 3
-
-  Address.create :content => '39 Campus Dr', :city => 'College Park', :state => 'MD',
-    :person_id => 4
-
-  Address.create :content => '66 Campus Dr', :city => 'College Park', :state => 'MD',
-    :person_id => 5
-
+  
   Telephone.create :number => 1234567, :person_id => 1
 
   Telephone.create :number => 1234588, :person_id => 2
@@ -61,5 +50,4 @@
   EmergencyContact.create :first_name => 'Greg', :last_name => 'Dickie', :middle_name => 'Thomas', :relation => 'Father',
     :person_id => 1
 
-  Note.create :title => 'GrantNotePerson', :content => 'This is a note about Grant'
-  Note.create :title => 'GrantNoteAddress', :content => 'Note on Grant\'s address'
+  Note.create :title => "A note concerning Grant...", :content => "Ipsum Lorem"
