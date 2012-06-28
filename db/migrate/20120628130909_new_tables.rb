@@ -35,6 +35,22 @@ class NewTables < ActiveRecord::Migration
     create_table :research_periods do |t|
       t.text :description
       t.string :area_group, :keyword
+      t.timestamps
+    end
+    
+    create_table :notes_research_periods, :id => false do |t|
+      t.integer :notes_id
+      t.integer :research_periods_id
+    end
+    
+    create_table :keywords do |t|
+      t.string :keyword_name
+      t.timestamps
+    end
+    
+    create_table :keywords_research_periods, :id => false do |t|
+      t.integer :keywords_id
+      t.integer :research_periods_id
     end
   end
 
@@ -43,5 +59,9 @@ class NewTables < ActiveRecord::Migration
     drop_table :awards_notes
     drop_table :leaves
     drop_table :leaves_notes
+    drop_table :publications
+    drop_table :notes_publications
+    drop_table :research_periods
+    drop_table :notes_research_periods
   end
 end
