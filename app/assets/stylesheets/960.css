@@ -1,12 +1,12 @@
 /** CSS styling for 960 grid system **/
 body {
-	background-color: #00B8F5;
+	background-color: #FFF;
 	margin: 0;
 	padding: 0;
 }
 
 body .main {
-	background-color: #3D00F5;
+	background-color: #FFF;
 	width: 960px;
 	padding: 1em;
 }

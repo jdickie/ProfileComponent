@@ -2,7 +2,5 @@
 
 <div class="grid1">
 	<p>Create new</p>
-</div>
-<div class="grid2">
-	<%= render :partial => 'listing' %> 
+	<%= render :partial => 'form', :locals => { :people => @people } %>
 </div>

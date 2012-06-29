@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120622180510) do
+ActiveRecord::Schema.define(:version => 20120628130909) do
 
   create_table "addresses", :force => true do |t|
     t.string  "address_type",              :default => "Work"
@@ -34,6 +34,19 @@ ActiveRecord::Schema.define(:version => 20120622180510) do
     t.integer "calendar_dates_id"
   end
 
+  create_table "awards_notes", :id => false, :force => true do |t|
+    t.integer "awards_id"
+    t.integer "notes_id"
+  end
+
+  create_table "awards_period", :force => true do |t|
+    t.string   "time_type"
+    t.integer  "calendar_dates_id"
+    t.integer  "awards_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
   create_table "calendar_dates", :force => true do |t|
     t.date    "start_date"
     t.date    "end_date"
@@ -46,7 +59,7 @@ ActiveRecord::Schema.define(:version => 20120622180510) do
 
   create_table "emails", :force => true do |t|
     t.string   "email_type", :default => "Work"
-    t.string   "uri", :unique => true
+    t.string   "uri"
     t.integer  "person_id"
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
@@ -79,10 +92,26 @@ ActiveRecord::Schema.define(:version => 20120622180510) do
     t.integer "calendar_dates_id"
   end
 
+  create_table "keywords", :force => true do |t|
+    t.string   "keyword_name"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "keywords_research_periods", :id => false, :force => true do |t|
+    t.integer "keywords_id"
+    t.integer "research_periods_id"
+  end
+
   create_table "leaves", :force => true do |t|
     t.integer "banked_courses_used"
     t.integer "people_id"
     t.integer "calendar_dates_id"
+  end
+
+  create_table "leaves_notes", :id => false, :force => true do |t|
+    t.integer "leaves_id"
+    t.integer "notes_id"
   end
 
   create_table "notes", :force => true do |t|
@@ -97,6 +126,16 @@ ActiveRecord::Schema.define(:version => 20120622180510) do
   create_table "notes_people", :id => false, :force => true do |t|
     t.integer "person_id"
     t.integer "note_id"
+  end
+
+  create_table "notes_publications", :id => false, :force => true do |t|
+    t.integer "publications_id"
+    t.integer "notes_id"
+  end
+
+  create_table "notes_research_periods", :id => false, :force => true do |t|
+    t.integer "notes_id"
+    t.integer "research_periods_id"
   end
 
   create_table "notes_telephones", :id => false, :force => true do |t|

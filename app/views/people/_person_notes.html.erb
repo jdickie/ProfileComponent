@@ -1,4 +1,7 @@
 <%= p.inputs :for => :notes do |note, i| %>
 	
-	<%= note.inputs :name => "Note" %>
+	<%= note.inputs :name => "Note" do %>
+		<%= note.input :title %>
+		<%= note.input :content %>
+	<% end %>
 <% end %>

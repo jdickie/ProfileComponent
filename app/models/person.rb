@@ -27,6 +27,9 @@ class Person < ActiveRecord::Base
  accepts_nested_attributes_for :telephones, :reject_if => proc { |attr| attr['telephone_type'].blank? }
  accepts_nested_attributes_for :notes, :allow_destroy => true
  
+ def to_s
+   "#{first_name} (#{last_name})" 
+ end
 end
 
 

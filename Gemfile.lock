@@ -112,7 +112,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   formtastic!
-  jquery-rails
+  jquery-rails (>= 1.0.12)
   json
   rails (= 3.2.3)
   sass-rails (~> 3.2.3)

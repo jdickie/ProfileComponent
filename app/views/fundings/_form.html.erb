@@ -1,0 +1,9 @@
+<%= semantic_form_for :funding do |f| %>
+	<%= f.inputs do %>
+		<%= f.input :institution, :label => "Name of the giving institution: " %>
+		<%= f.input :description, :label => "Describe the project: " %>
+		<%= f.input :person_id, :as => :select, :collection => @people, :allow_blank => false %>
+		
+	<% end %>
+	<%= f.actions %>
+<% end %>

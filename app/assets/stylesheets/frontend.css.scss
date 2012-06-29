@@ -1,0 +1,53 @@
+$body_color: #FFF;
+$screen_width: 960px;
+$header_height: 96px;
+$navbar_color: #3D00F5;
+$navbar_links_color: #5D00C6;
+
+body {
+	background-color: $body_color;
+}
+
+.header {
+	background-color: $body_color;
+	height: $header_height;
+}
+
+.header #titlebar {
+	height: $header_height/3 * 2;
+	
+}
+.header #titlebar {
+	margin-right: 10px;
+	margin-left: 10px;
+}
+.header .navbar {
+	position: relative;
+	margin-left: 10px;
+	margin-right: 10px;
+	height: $header_height/3;
+	background-color: $navbar_color;
+	color: $body_color;
+}
+
+.header .navbar ul {
+	list-style-type: none;
+	padding: .5em;
+}
+
+.header .navbar ul li {
+	display: inline;
+	float: left;
+	margin-left: 6px;
+	margin-right: 6px;
+	background-color: $navbar_links_color;
+}
+
+.header .navbar a {
+	text-decoration: none;
+	color: $body_color;
+}
+
+.main {
+	background-color: #FFF;
+}

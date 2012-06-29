@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
- 
+    
   def new
     @person = Person.new
     @person.notes.build

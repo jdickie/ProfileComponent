@@ -1,8 +1,6 @@
 class AddressController < ApplicationController
   def index
-    
     @addresses = Address.find(:all)
-    
     
     redirect_to do |format|
       format.html # index.html.erb

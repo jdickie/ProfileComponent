@@ -5,23 +5,30 @@
 	<div class="errors">
 		<%= p.semantic_errors :state %>
 	</div>
+	<div class="messages">
+		<p>* = Required</p>
+	</div>
+	<br />
 	<div id="person_type" class="field">
 		<%= p.input :person_type, :as => :radio, :label => "University Role: (Select only one)", 
 		:collection => ["Faculty", "Staff", "Graduate Student", "Undergraduate Student", "Donor"] %>
 	</div>
+	<hr />
+	<hr />
 	<div id="person_info" class="field">
+		<div id="header_field1" class="headerfield">Basic</div>
 		<%= p.inputs do %>
 			<%= p.input :first_name, :label => "First Name", :required => true %>
 			<%= p.input :last_name, :label => "Last Name", :required => true %>
 			<%= p.input :middle_name, :label => "Middle", :required => false %>
-			<%= p.input :date_of_birth, :label => "Birthdate (Use dropdowns to select)", :required => true %>
+			<%= p.input :date_of_birth, :order => [:day, :month, :year], :start_year => 1900, 
+			:end_year => Date.today.year, :include_blank => false,
+			:label => "Birthdate (Use dropdowns to select)", :required => true %>
+			<%= p.input :gender, :as => :radio, :collection => ["Male", "Female"] %>
+			<%= p.input :race, :as => :radio, 
+			:collection => ["African-American", "Alaska Native", "Asian", "Black", "Hispanic", "Latino", "Native-American", "White"] %>
+			<%= p.input :spouse_name %>
 		<% end %>
-	</div>
-	<div id="person_sensitive" class="field">
-		<%= p.input :gender, :as => :radio, :collection => ["Male", "Female"] %>
-		<%= p.input :race, :as => :radio, 
-		:collection => ["African-American", "Alaska Native", "Asian", "Black", "Hispanic", "Latino", "Native-American", "White"] %>
-		<%= p.input :spouse_name %>
 	</div>
 	<div id="person_address" class="field">
 		<%= p.fields_for :addresses do |builder| %>
