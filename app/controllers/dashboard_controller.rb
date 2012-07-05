@@ -1,5 +1,5 @@
 # Controller for the root index page
-class FrontendController < ActionController::Base
+class DashboardController < ActionController::Base
   protect_from_forgery
   
   def index

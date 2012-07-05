@@ -1,25 +1,26 @@
 $body_color: #FFF;
 $screen_width: 960px;
 $header_height: 96px;
-$navbar_color: #3D00F5;
-$navbar_links_color: #5D00C6;
-
-body {
-	background-color: $body_color;
-}
-
+$navbar_color: #990033;
+$navbar_links_color: transparent;
+$navbar_links_active_color: #FFF;
+$main_size: 960px;
+/**
+* Header 
+**/
 .header {
 	background-color: $body_color;
 	height: $header_height;
 }
 
-.header #titlebar {
-	height: $header_height/3 * 2;
-	
+
+.header #titlebar span {
+	display: inline
 }
+
 .header #titlebar {
 	margin-right: 10px;
-	margin-left: 10px;
+	margin-left: 20px;
 }
 .header .navbar {
 	position: relative;
@@ -48,6 +49,22 @@ body {
 	color: $body_color;
 }
 
+/**
+* Main area (Area below navbar)
+**/
+
 .main {
 	background-color: #FFF;
+}
+
+#processing.grid1 {
+	width: $main_size/3;
+}
+
+#announcements.grid2 {
+	width: $main_size/3;
+}
+
+#links.grid3 {
+	width: $main_size/3;
 }

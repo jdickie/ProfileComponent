@@ -10,6 +10,7 @@ class Person < ActiveRecord::Base
  has_many :emails, :dependent => :destroy
  has_many :addresses, :dependent => :destroy
  has_many :telephones, :dependent => :destroy
+ has_many :office_hours, :dependent => :destroy
  has_one :emergency_contact, :dependent => :destroy
  has_and_belongs_to_many :notes
  
