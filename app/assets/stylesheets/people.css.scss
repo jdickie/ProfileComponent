@@ -6,9 +6,11 @@ $mainwidth: 960px;
 $margin: 10px;
 $blue: #3bbfce;
 $bordersize: 2px;
+$header_background: #FFFF33;
+$header_height: 18px;
 
 #person_basic.grid1 {
-	width: $mainwidth / 2;
+	width: $mainwidth;
 	padding: $margin / 4;
 	margin-left: $margin;
 	margin-right: $margin;
@@ -21,7 +23,6 @@ $bordersize: 2px;
 }
 
 #person_basic.grid1 .form form div {
-	float: left;
 	margin: $margin;
 }
 
@@ -38,4 +39,25 @@ $bordersize: 2px;
 
 #person_basic.grid1 .form form div div.choices label {
 	display: inline;
+}
+
+#person_basic.grid1 .form form .field .header {
+	background: $header_background;
+	width: 80%;
+	height: $header_height;
+}
+
+#person_type.top_field {
+	background: $header_background;
+	width: 100%;
+	margin-bottom: $margin * 2;
+	border-bottom: $bordersize $blue solid;
+}
+
+.field.inactive .body {
+	display: none;
+}
+
+.field.active .body {
+	display: block;
 }

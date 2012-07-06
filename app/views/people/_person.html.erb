@@ -9,7 +9,7 @@
 		<p>* = Required</p>
 	</div>
 	<br />
-	<div id="person_type" class="field">
+	<div id="person_type" class="top_field">
 		<%= p.input :person_type, :as => :radio, :label => "University Role: (Select only one)", 
 		:collection => ["Faculty", "Staff", "Graduate Student", "Undergraduate Student", "Donor"] %>
 	</div>
@@ -30,20 +30,38 @@
 			<%= p.input :spouse_name %>
 		<% end %>
 	</div>
-	<div id="person_address" class="field">
-		<%= p.fields_for :addresses do |builder| %>
-			<%= render "person_address", :p => builder %>
-		<% end %>
+	<div id="person_address" class="field inactive">
+		<div id="addresses" class="header">Addresses</div>
+		<div class="body">
+			<%= p.fields_for :addresses do |builder| %>
+				<%= render "person_address", :p => builder %>
+			<% end %>
+		</div>
 	</div>
-	<div id="person_email" class="field">
-		<%= p.fields_for :emails do |builder| %>
-			<%= render "person_email", :p => builder %>
-		<% end %>
+	<div id="person_email" class="field inactive">
+		<div id="emails" class="header">Emails</div>
+		<div class="body">
+			<%= p.fields_for :emails do |builder| %>
+				<%= render "person_email", :p => builder %>
+			<% end %>
+		</body>
 	</div>
-	<div id="person_telephone" class="field">
-		<%= p.fields_for :telephones do |builder| %>
-			<%= render '_person_telephone', :p => builder %>
-		<% end %>
+	<div id="person_telephone" class="field inactive">
+		<div id="telephones" class="header">Telephones</div>
+		<div class="body">
+			<%= p.fields_for :telephones do |builder| %>
+				<%= render '_person_telephone', :p => builder %>
+			<% end %>
+		</div>
+	</div>
+	<hr />
+	<div id="person_office_hours" class="field inactive">
+		<div id="office_hours" class="header">
+			Office Hours
+		</div>
+		<div class="body">
+			
+		</div>
 	</div>
 	<div id="person_notes" class="field">
 		<%= render 'person_notes', :p => p %>

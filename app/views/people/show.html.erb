@@ -1,36 +1,50 @@
 <div class="main">
 	<p id="notice"><%= notice %></p>
 	<% if @people %>
-		<% @people.each do |person| %>
-			<div class="grid<%= person.id %>">
-				<p>
-					<%= person.first_name %><br />
-					<%= person.middle_name %><br />
-					<%= person.last_name %>
-					&apos;<%= person.nickname %>&apos;
-				</p>
-				<br/>
-				<p>
-					<h3>Details</h3>
-					<%= person.gender %><br/>
-					<%= person.race %>
-					<%= person.person_type %>
-				</p>
-			
-				<p>
-					<h2>Notes</h2>
-					<% person.notes.each do |note| %>
-						<p>
-							<%= note.content %>
-							<br/>
-							<%= label note, :_destroy, "Remove" %>
-							<%= check_box note, :_destroy %>
-						</p>
+	  <table id="people" class="display">
+		<thead>
+			<tr>
+				<th>Person Name</th>
+				<th>Address</th>
+				<th>Telephone</th>
+				<th>Email</th>
+				<th>Gender</th>
+				<th>Race</th>
+				<th>Affiliation</th>
+				<th>Date Created</th>
+				<th>Last Updated</th>
+			</tr>
+		</thead>
+		<tbody>
+		  
+		  <% @people.each do |person| %>
+			<tr>
+				<td><%= person.last_name %>, <%= person.first_name %></td>
+				<td>
+				<%= person.addresses.each do |address| %>
+					<%= link_to(address.city, 'addresses') %><br/>
+				<% end %>
+				</td>
+				<td>
+					<%= person.telephones.each do |tele| %>
+						<%= link_to(tele.number, 'telephones') %>
 					<% end %>
-			
-				</p>
-			</div>
-		<% end %>
+				</td>
+				<td>
+					<%= person.emails.each do |email| %>
+						<%= link_to(email.uri, 'emails') %>
+					<% end %>
+				</td>
+				<td><%= person.gender %></td>
+				<td><%= person.race %></td>
+				<td><%= person.person_type %></td>
+				<td><%= person.created_at %></td>
+				<td><%= person.updated_at %></td>
+			</tr>
+		  <% end %>
+		 
+		</tbody>
+	  </table>
 	<% else %>
 		<div class="grid<%= @person.id %>">
 			<p>

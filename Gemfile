@@ -19,11 +19,15 @@ group :assets do
   # gem 'therubyracer', :platform => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-rails', '>= 1.0.12'
+  gem 'jquery-datatables-rails'
+  gem 'jquery-ui-rails'
+  gem 'formtastic', :git => 'git://github.com/justinfrench/formtastic.git'
 end
 
-gem 'jquery-rails', '>= 1.0.12'
+gem 'will_paginate'
 
-gem 'formtastic', :git => 'git://github.com/justinfrench/formtastic.git'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
