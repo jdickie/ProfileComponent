@@ -9,39 +9,39 @@ $bordersize: 2px;
 $header_background: #FFFF33;
 $header_height: 18px;
 
-#person_basic.grid1 {
+#person_edit.grid1, #person_new.grid1 {
 	width: $mainwidth;
 	padding: $margin / 4;
 	margin-left: $margin;
 	margin-right: $margin;
 }
 
-#person_basic.grid1 .form form {
+#person_edit.grid1 .form form, #person_new.grid1 .form form {
 	width: 100%;
 	border-size: $bordersize;
 	border-color: $blue; 
 }
 
-#person_basic.grid1 .form form div {
+#person_edit.grid1 .form form div, #person_new.grid1 .form form div {
 	margin: $margin;
 }
 
-#person_basic.grid1 .form form div label {
+#person_edit.grid1 .form form div label, #person_new.grid1 .form form div label {
 	display: block;
 }
-#person_basic.grid1 .form form div input {
+#person_edit.grid1 .form form div input, #person_new.grid1 .form form div input {
 	display: inline;
 }
 
-#person_basic.grid1 .form form div div.choices {
+#person_edit.grid1 .form form div div.choices, #person_new.grid1 .form form div div.choices {
 	float: none;
 }
 
-#person_basic.grid1 .form form div div.choices label {
+#person_edit.grid1 .form form div div.choices label, #person_new.grid1 .form form div div.choices label {
 	display: inline;
 }
 
-#person_basic.grid1 .form form .field .header {
+#person_edit.grid1 .form form .field header, #person_new.grid1 .form form .field .header {
 	background: $header_background;
 	width: 80%;
 	height: $header_height;

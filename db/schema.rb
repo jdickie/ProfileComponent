@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120703194403) do
+ActiveRecord::Schema.define(:version => 20120709172349) do
 
   create_table "addresses", :force => true do |t|
     t.string  "address_type",              :default => "Work"
@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(:version => 20120703194403) do
   end
 
   create_table "calendar_dates", :force => true do |t|
-    t.date    "start_date"
-    t.date    "end_date"
+    t.date    "start_time",               :default => '2012-07-09'
+    t.date    "end_time",                 :default => '2012-07-09'
     t.integer "year",        :limit => 4
     t.integer "month",       :limit => 2
     t.integer "day",         :limit => 2
@@ -144,8 +144,8 @@ ActiveRecord::Schema.define(:version => 20120703194403) do
   end
 
   create_table "office_hours", :force => true do |t|
-    t.integer "people_id"
-    t.integer "calendar_dates_id"
+    t.integer "person_id"
+    t.integer "calendar_date_id"
   end
 
   create_table "people", :force => true do |t|

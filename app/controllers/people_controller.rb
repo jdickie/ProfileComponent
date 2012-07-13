@@ -3,10 +3,11 @@ class PeopleController < ApplicationController
   def new
     @person = Person.new
     @person.notes.build
-    
+    @person.office_hours.build
     address = @person.addresses.build
     email = @person.emails.build
     telephone = @person.telephones.build
+    
   end
   
   def show

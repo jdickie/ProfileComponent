@@ -10,9 +10,11 @@ class Person < ActiveRecord::Base
  has_many :emails, :dependent => :destroy
  has_many :addresses, :dependent => :destroy
  has_many :telephones, :dependent => :destroy
+ has_many :office_hours
  has_many :calendar_dates, :through => :office_hours, :dependent => :destroy
  has_one :emergency_contact, :dependent => :destroy
  has_and_belongs_to_many :notes
+ 
  
  validates :first_name, :presence => true
  validates :last_name, :presence => true
@@ -27,6 +29,7 @@ class Person < ActiveRecord::Base
  accepts_nested_attributes_for :emails, :reject_if => proc { |attr| attr['email_type'].blank? }
  accepts_nested_attributes_for :telephones, :reject_if => proc { |attr| attr['telephone_type'].blank? }
  accepts_nested_attributes_for :notes, :allow_destroy => true
+ accepts_nested_attributes_for :office_hours, :allow_destroy => true
  
  def to_s
    "#{first_name} (#{last_name})" 

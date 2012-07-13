@@ -19,7 +19,15 @@
 		  
 		  <% @people.each do |person| %>
 			<tr>
-				<td><%= person.last_name %>, <%= person.first_name %></td>
+				<%
+					p_name = person.last_name
+					if (person.middle_name)
+						p_name = p_name + ", " + person.middle_name + " " + person.first_name
+					else
+						p_name = p_name + ", " + person.first_name
+					end
+				%>
+				<td><%= link_to(p_name, person) %></td>
 				<td>
 				<%= person.addresses.each do |address| %>
 					<%= link_to(address.city, 'addresses') %><br/>

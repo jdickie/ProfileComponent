@@ -60,7 +60,18 @@
 			Office Hours
 		</div>
 		<div class="body">
-			
+			<%= p.fields_for :office_hours do |builder| %>
+				<%= builder.inputs :for => :calendar_dates do |date, i| %>
+					<%= date.inputs :name => "Enter date" do %>
+						<%= date.input :semester %>
+						<%= date.input :year %>
+						<%= date.input :month %>
+						<%= date.input :day %>
+						<%= date.input :start_time %>
+						<%= date.input :end_time %>
+					<% end %>
+				<% end %>
+			<% end %>
 		</div>
 	</div>
 	<div id="person_notes" class="field">
