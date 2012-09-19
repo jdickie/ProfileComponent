@@ -1,3 +1,11 @@
+/**
+* The following are included as main stylesheets for the entire application.
+* 
+*= require_self
+*= require_tree ./dashboard
+*/
+
+
 $body_color: #FFF;
 $body_margin: 0;
 $main_size: 960px;
