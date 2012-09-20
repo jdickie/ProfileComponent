@@ -13,6 +13,14 @@ ArhuPeople::Application.routes.draw do
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
+  # RESOURCE ROUTES
+  resources :admins
+  resources :users
+
+
+  # PATHS
+  
+
   # Sample resource route with options:
   #   resources :products do
   #     member do
