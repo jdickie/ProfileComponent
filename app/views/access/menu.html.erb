@@ -1,2 +1,19 @@
-<h1>Access#menu</h1>
-<p>Find me in app/views/access/menu.html.erb</p>
+<%= render :partial => 'dashboard/header' %>
+<%= render :partial => 'header' %>
+<div class="main">
+	<div class="grid1">
+		<% if flash[:notice].blank? == false %>
+			<div class="flashnotice">
+				<%= flash[:notice] %>
+			</div>
+		<% end %>
+		<div class="grid_header">
+			<h2>Users in the System</h2>
+		</div>
+		<div class="grid_body">
+			<%= @users.each do |u| %>
+				
+			<% end %>
+		</div>
+	</div>
+</div>

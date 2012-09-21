@@ -1,2 +1,15 @@
-<h1>Access#login</h1>
-<p>Find me in app/views/access/login.html.erb</p>
+<div class="grid1">
+	<%= form_tag(:action => 'attempt_login') do %>
+		<div class="login_fields">
+			<div class="field">
+				<%= text_field_tag(:username) %>
+			</div>
+			<div class="field">
+				<%= password_field_tag(:pass) %>
+			</div>
+		</div>
+		<div class="login_actions">
+			<%= submit_tag("Login") %>
+		</div>
+	<% end %>
+</div>

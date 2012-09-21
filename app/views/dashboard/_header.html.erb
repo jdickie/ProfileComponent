@@ -1,6 +1,13 @@
 <div id="frontend_header" class="header">
 	<div id="titlebar">
-		<span id="user_data">Hello, User | Last access</span>
+		
+		<span id="user_data">
+			<% if session[:user_id] && session[:username] %>
+				Hello, <%= session[:username] %> | Last access
+			<% else %>
+				You are not logged in
+			<% end %>
+		</span>
 		<span id="search_bar"></span>
 		<span id="admin_quick_links"></span>
 	</div>
