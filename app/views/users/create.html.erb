@@ -1,10 +1,10 @@
-<div class="formtastic_form_users">
-	<%= semantic_form_for @user do |f| %>
-		<%= f.input :username %>
-		<%= f.input :password %>
-		<%= f.input :email %>
-	<% 
-		# end of user form
-		end 
-	%>
+<div class="formtastic_form_users grid1">
+	<%= render :partial => 'form' %>
+</div>
+<div class="grid2">
+	<% if @users.blank? == false %>
+		<%= foreach @users as :user %>
+			
+		<% end %>
+	<% end %>
 </div>
