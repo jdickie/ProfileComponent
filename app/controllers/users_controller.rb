@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   protect_from_forgery
+  
+  before_filter :confirm_logged_in
+  
   def new
     @user = User.new
   end

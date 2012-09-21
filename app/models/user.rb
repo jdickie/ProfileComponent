@@ -38,9 +38,6 @@ class User < ActiveRecord::Base
     hashed_password == User.hash_with_salt(password, salt)
   end
   
-  private
-  
-  
   # Creates a salt to be added dynamically to the password
   # in order to create a more secure hashed password
   def make_salt(username="")
@@ -51,6 +48,8 @@ class User < ActiveRecord::Base
   def hash_with_salt(password="", salt="")
     Digest::SHA1.hexdigest(salt + password)
   end
+  
+  private 
   
   # used to automate creating hashed password
   def auto_hash

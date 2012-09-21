@@ -2,9 +2,11 @@
 	<%= form_tag(:action => 'attempt_login') do %>
 		<div class="login_fields">
 			<div class="field">
+				<%= label_tag(:username) %><br/>
 				<%= text_field_tag(:username) %>
 			</div>
 			<div class="field">
+				<%= label_tag(:pass) %><br/>
 				<%= password_field_tag(:pass) %>
 			</div>
 		</div>
