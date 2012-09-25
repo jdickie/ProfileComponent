@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   # non-db variables
   attr_accessor :password
   
-  validates :username, :uniqueness => true, :length => { :maximum => 25, :minimum => 8 }
+  validates :username, :uniqueness => true, :length => { :maximum => 25, :minimum => 4 }
   # validating email to prevent attacks
   validates_format_of :email, :with =>
     /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   after_save :clear_password
   
   # authenticates the user using base-class methods
-  def authenticate(username="", pass="") 
+  def self.authenticate(username="", pass="") 
     # find the user by name
     u = User.find_by_username(username)
     # make passed password string salted, then compare
@@ -34,18 +34,18 @@ class User < ActiveRecord::Base
   end
   
   # compares the stored hashed_password with a passed string
-  def password_match(password="")
+  def self.password_match(password="")
     hashed_password == User.hash_with_salt(password, salt)
   end
   
   # Creates a salt to be added dynamically to the password
   # in order to create a more secure hashed password
-  def make_salt(username="")
+  def self.make_salt(username="")
     Digest::SHA1.hexdigest("Inanother#{Time.now}momentdownwent#{username}afterit")
   end
   
   # creates a hashed version of the password
-  def hash_with_salt(password="", salt="")
+  def self.hash_with_salt(password="", salt="")
     Digest::SHA1.hexdigest(salt + password)
   end
   
@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
   def auto_hash
     unless password.blank?
       self.salt = User.make_salt(username) if salt.blank?
-      self.hashed_password = User.hash_with_salt(password, self.salt)
+      self.hashed_password = User.hash_with_salt(password, salt)
     end
   end
   

@@ -9,7 +9,5 @@
 admin = User.create({
   :username => "admin",
   :email => 'admin@nowhere.com',
-  :role => 'Administrator',
-  :salt => nil,
-  :hashed_password => nil
+  :password => 'VO1VODb0x9'
 })
