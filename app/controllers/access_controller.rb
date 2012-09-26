@@ -11,11 +11,9 @@ class AccessController < ApplicationController
   end
 
   def login
-    
   end
   
   def logout
-    #TODO: mark the user as logged out
     flash[:notice] = 'You have been logged out'
     redirect_to(:action => 'menu')
   end
@@ -29,7 +27,6 @@ class AccessController < ApplicationController
       session[:username] = auth_user.username
       flash[:notice] = 'You have successfully logged in'
       redirect_to(:action => 'menu')
-      
     else
       flash[:notice] = 'Invalid username/password combination'
       redirect_to(:action => 'login')

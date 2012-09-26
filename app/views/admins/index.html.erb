@@ -7,7 +7,10 @@
 		</div>
 		<div class="grid_body">
 			<%= @users.each do |u| %>
-				
+			<div class="user_item">
+				<%= u.username %> |
+				<%= link_to user_edit_path(u.id) %>
+			</div>
 			<% end %>
 		</div>
 	</div>

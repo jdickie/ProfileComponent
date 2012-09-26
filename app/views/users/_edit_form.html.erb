@@ -1,0 +1,13 @@
+<%= semantic_form_for @user do |f| %>
+	<%= f.inputs "Basic", do %>
+		<%= f.input :username, :label => "Change the Username", :required => false %>
+		<%= f.input :email, :label => "Change the Email", :required => false %>
+	<% end %>
+	<%= f.inputs "Roles", do %>
+		
+	<% end %>
+	<%= f.actions do %>
+		<%= f.action :submit, :as => :button %>
+		<%= f.action :cancel, :as => :button %>
+	<% end %>
+<% end %>
