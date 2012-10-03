@@ -11,3 +11,15 @@ admin = User.create({
   :email => 'admin@nowhere.com',
   :password => 'VO1VODb0x9'
 })
+
+Permission.create([
+  {
+    :name => "Edit"
+  },
+  {
+    :name => "Create"
+  },
+  {
+    :name => "Destroy"
+  }
+])

@@ -2,9 +2,15 @@ require 'digest/sha1'
 class User < ActiveRecord::Base
   attr_accessible :username, :email
   attr_protected :hashed_password, :salt
-  
-  # non-db variables
+  ####################
+  # non-db variables #
+  ####################
   attr_accessor :password
+  
+  
+  ####################
+  # validations      #
+  ####################
   
   validates :username, :uniqueness => true, :length => { :maximum => 25, :minimum => 4 }
   # validating email to prevent attacks
@@ -14,6 +20,12 @@ class User < ActiveRecord::Base
   
   # checks length of the password when user first enters it
   validates_length_of :password, :within => 8..25, :on => :create
+  
+  ##########################
+  # Relationships for User #
+  ##########################
+  
+  has_many :roles
   
   
   before_save :auto_hash
