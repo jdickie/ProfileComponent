@@ -13,8 +13,8 @@ class CreateRoles < ActiveRecord::Migration
     end
     
     create_table :role_has_permissions do |t|
-      t.references :roles
-      t.references :permissions
+      t.integer :role_id
+      t.integer :permission_id
       t.timestamps
     end
   end
