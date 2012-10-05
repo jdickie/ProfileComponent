@@ -34,4 +34,13 @@ class AccessController < ApplicationController
     
   end
   
+  # Registers the users permissions and role(s) into the session
+  def register_user_roles
+    if (session[:user_id])
+      
+      u = User.find(session[:user_id])
+      roles = u.fetch_roles()
+      session[:user_roles] = Array.new(roles) if roles?
+      
+    end
 end

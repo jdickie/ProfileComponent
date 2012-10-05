@@ -21,5 +21,8 @@ Permission.create([
   },
   {
     :name => "Destroy"
+  },
+  {
+    :name => 'All'
   }
 ])
