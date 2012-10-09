@@ -26,6 +26,7 @@ group :assets do
 end
 
 gem 'will_paginate'
+gem 'cancan'
 
 
 # To use ActiveModel has_secure_password
