@@ -76,4 +76,26 @@ class User < ActiveRecord::Base
     self.password = nil
   end
   
+  ######################
+  # Roles-based authentication - defining mask for
+  # roles. Roles act as individual integers, which is
+  # the efficient way of storing them. 
+  ######################
+  def roles=(roles)
+    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
+  end
+
+  def roles
+    ROLES.reject do |r|
+      ((roles_mask || 0) & 2**ROLES.index(r)).zero?
+    end
+  end
+  
+  ## 
+  # Checks the role against the user
+  ##
+  def is?(role)
+    roles.include?(role.to_s)
+  end
+  
 end
