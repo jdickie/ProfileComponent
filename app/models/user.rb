@@ -31,6 +31,14 @@ class User < ActiveRecord::Base
   before_save :auto_hash
   after_save :clear_password
   
+  ##########################
+  # Defining Roles
+  #
+  # List roles from least permissions to 
+  # highest permissions
+  ##########################
+  ROLES = %w[admin superadmin]
+  
   # authenticates the user using base-class methods
   def self.authenticate(username="", pass="") 
     # find the user by name

@@ -2,6 +2,13 @@
 	<%= f.input :username %>
 	<%= f.input :password %>
 	<%= f.input :email %>
+	
+	<%= f.input :user_roles, :as => :check_boxes, 
+	:collection => User::ROLES,
+	:member_label => "user[roles[#{role}]]",
+	:label => "User roles" %>
+	 
+	<%= hidden_field_tag "user[roles][]", "" %>
 	<%= f.action :submit, :as => :button %>
 <% 
 	# end of user form
