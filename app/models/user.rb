@@ -39,13 +39,14 @@ class User < ActiveRecord::Base
   ##########################
   ROLES = %w[admin superadmin]
   
+ 
   # authenticates the user using base-class methods
-  def self.authenticate(username="", pass="") 
+  def self.authenticate(username="", password="") 
     # find the user by name
     u = User.find_by_username(username)
     # make passed password string salted, then compare
     # with what is in the database
-    if u && u.password_match?(pass)
+    if u && u.password_match?(password)
       # return the User object
       return u
     else 
@@ -54,9 +55,10 @@ class User < ActiveRecord::Base
   end
   
   # compares the stored hashed_password with a passed string
-  def self.password_match(password="")
-    hashed_password == User.hash_with_salt(password, salt)
-  end
+   def password_match?(password="")
+     hashed_password == User.hash_with_salt(password, salt)
+   end
+  
   
   # Creates a salt to be added dynamically to the password
   # in order to create a more secure hashed password
@@ -67,6 +69,10 @@ class User < ActiveRecord::Base
   # creates a hashed version of the password
   def self.hash_with_salt(password="", salt="")
     Digest::SHA1.hexdigest(salt + password)
+  end
+  
+  def ability 
+    @ability ||= Ability.new(self)
   end
   
   private 

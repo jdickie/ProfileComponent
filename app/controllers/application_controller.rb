@@ -22,20 +22,8 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  def get_allowed_menu_items(params)
-    unless session[:user_id]
-      return false
-    else
-      a = Array.new()
-      u = User.find(session[:user_id])
-      if (u)
-        # check permissions against menu items
-        
-      else
-        return false
-      end
-      return a
-    end
+  def current_user
+    return User.find(session[:user_id])
   end
   
 end

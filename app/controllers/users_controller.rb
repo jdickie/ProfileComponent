@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   protect_from_forgery
   
+  load_and_authorize_resource
   before_filter :confirm_logged_in
   
   def new

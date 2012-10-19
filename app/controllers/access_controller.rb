@@ -8,6 +8,7 @@ class AccessController < ApplicationController
   end
   
   def menu
+    @users = User.find(:all)
   end
 
   def login

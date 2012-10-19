@@ -11,14 +11,18 @@
 		<span id="search_bar"></span>
 		<span id="admin_quick_links"></span>
 	</div>
-	<div class="navbar">
-		<ul>
-			<li>
-				<%= link_to "Dashboard", root_path %>
-			</li>
-			<li>
-				<%= link_to "User", new_user_path %>
-			</li>
-		</ul>
-	</div>
+	<% if session[:user_id] %>
+		<div class="navbar">
+			<ul>
+				<li>
+					<%= link_to "Dashboard", root_path %>
+				</li>
+				<% if can? :manage, User %>
+					<li>
+						<%= link_to "User", new_user_path %>
+					</li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
 </div>
