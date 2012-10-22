@@ -11,6 +11,4 @@ class Permissions < ActiveRecord::Base
   
   attr_accessible :name
   
-  has_many :roles, :through => :role_has_permissions
-  
 end

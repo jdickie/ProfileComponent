@@ -25,8 +25,6 @@ class User < ActiveRecord::Base
   # Relationships for User #
   ##########################
   
-  has_many :roles
-  
   
   before_save :auto_hash
   after_save :clear_password
