@@ -17,10 +17,11 @@
 				<li>
 					<%= link_to "Dashboard", root_path %>
 				</li>
-				<% if can? :manage, User %>
+				<% if @user.is? :admin %>
 					<li>
 						<%= link_to "User", new_user_path %>
 					</li>
+			
 				<% end %>
 			</ul>
 		</div>

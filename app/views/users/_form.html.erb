@@ -3,12 +3,20 @@
 	<%= f.input :password %>
 	<%= f.input :email %>
 	
-	<%= f.input :user_roles, :as => :check_boxes, 
-	:collection => User::ROLES,
-	:member_label => "user[roles[#{role}]]",
-	:label => "User roles" %>
-	 
+	<% for role in User::ROLES %>
+		<% 
+			checked = false 
+			if (@user.roles.include?(role)):
+				checked = true
+			end
+		
+		%>
+	  <%= check_box_tag "user[roles][#{role}]", role, @user.roles.include?(role), 
+		{:name => "user[roles][]", :input_html => {:checked => checked }}  %>
+	  <%= label_tag "user_roles_#{role}", role.humanize %><br />
+	<% end %>
 	<%= hidden_field_tag "user[roles][]", "" %>
+	
 	<%= f.action :submit, :as => :button %>
 <% 
 	# end of user form

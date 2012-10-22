@@ -8,6 +8,7 @@ class AccessController < ApplicationController
   end
   
   def menu
+    @user = User.find(session[:user_id])
     @users = User.find(:all)
   end
 

@@ -75,21 +75,6 @@ class User < ActiveRecord::Base
     @ability ||= Ability.new(self)
   end
   
-  private 
-  
-  # used to automate creating hashed password
-  def auto_hash
-    unless password.blank?
-      self.salt = User.make_salt(username) if salt.blank?
-      self.hashed_password = User.hash_with_salt(password, salt)
-    end
-  end
-  
-  # used to change password
-  def clear_password 
-    self.password = nil
-  end
-  
   ######################
   # Roles-based authentication - defining mask for
   # roles. Roles act as individual integers, which is
@@ -110,6 +95,21 @@ class User < ActiveRecord::Base
   ##
   def is?(role)
     roles.include?(role.to_s)
+  end
+  
+  private 
+  
+  # used to automate creating hashed password
+  def auto_hash
+    unless password.blank?
+      self.salt = User.make_salt(username) if salt.blank?
+      self.hashed_password = User.hash_with_salt(password, salt)
+    end
+  end
+  
+  # used to change password
+  def clear_password 
+    self.password = nil
   end
   
 end
