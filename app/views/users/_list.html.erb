@@ -1,0 +1,14 @@
+<% 
+# List of existing users
+%>
+<% @users.each do |t| %>
+	<div class="user">
+		<%= label_tag 'Username: ' %>
+		<%= t.username %>
+		<br/>
+		<%= t.roles.join ' ' %>
+		<br/>
+		<%= link_to "Edit", :controller => 'users', :action => 'edit', :id => t.id %>
+		<hr/>
+	</div>
+<% end %>

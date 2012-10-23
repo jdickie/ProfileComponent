@@ -7,7 +7,8 @@ class UsersController < ApplicationController
     @user = User.new
   end
   
-  def show
+  def index
+    @user = User.find(session[:user_id])
     @users = User.find(:all)
   end
   
