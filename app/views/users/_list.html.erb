@@ -3,12 +3,26 @@
 %>
 <% @users.each do |t| %>
 	<div class="user">
-		<%= label_tag 'Username: ' %>
-		<%= t.username %>
-		<br/>
-		<%= t.roles.join ' ' %>
-		<br/>
-		<%= link_to "Edit", :controller => 'users', :action => 'edit', :id => t.id %>
-		<hr/>
+	
+		<div class="user_item">
+			<div class="label">
+				<%= label_tag 'Username: ' %>
+			</div>
+			<%= t.username %>
+		</div>
+		<div class="user_item">
+			<div class="label">
+				<%= label_tag 'Role(s): ' %>
+			</div>
+			<%= t.roles.join ' ' %>
+		</div>
+		<% if @user.is? :admin %>
+			<div class="user_item">
+				<%= link_to "Edit", :controller => 'users', :action => 'edit', :id => t.id %>
+			</div>
+			<div class="user_item">
+				<%= link_to "Delete", :controller => 'users', :action => 'destroy', :id => t.id %>
+			</div>
+		<% end %>
 	</div>
 <% end %>
