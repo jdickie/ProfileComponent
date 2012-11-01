@@ -3,5 +3,11 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $(document).ready -> 
-	$('#taxonomylist').dataTable();
+	$('#taxonomylist').dataTable({
+		bStateSave : 'true',
+		sScrollX : 'false',
+		sScrollY : 'true',
+		iCookieDuration: 6000,
+		bScrollCollapse: 400
+	});
 	
