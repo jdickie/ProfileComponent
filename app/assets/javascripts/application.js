@@ -12,7 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
-
 // Requiring datatables plugin (https://github.com/rweng/jquery-datatables-rails)
 //= require dataTables/jquery.dataTables

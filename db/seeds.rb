@@ -12,3 +12,20 @@ admin = User.create({
   :password => 'VO1VODb0x9',
   :roles_mask => [1]
 })
+
+Taxonomy.create([{
+  :name => "Important",
+  :description => "Something important"
+},
+{
+  :name => "Not Important",
+  :description => "Something not important"
+},
+{
+  :name => "Urgent",
+  :description => "Needs to get done this week"
+},
+{
+  :name => "Critical",
+  :description => "Needs to get done ASAP"
+}])

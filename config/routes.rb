@@ -16,9 +16,9 @@ ArhuPeople::Application.routes.draw do
   #   resources :products
 
   # RESOURCE ROUTES
-  resources :admins
   resources :users
   resources :abilities
+  resources :taxonomies
 
 
   # PATHS
