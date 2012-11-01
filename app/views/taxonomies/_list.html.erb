@@ -1,0 +1,13 @@
+<div id="taxonomylist" class="list_table">
+	
+	<%= @taxonomies.each do |t| %>
+		<div class="taxonomy">
+			<div class="taxonomy_item">
+				<%= t.name %>
+			</div>
+			<div class="taxonomy_item">
+				<%= t.description %>
+			</div>
+		</div>
+	<% end %>
+</div>

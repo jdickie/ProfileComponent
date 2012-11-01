@@ -27,3 +27,8 @@
 		</div>
 	<% end %>
 </div>
+<div class="message_alerts">
+	<% if (params[:flash]): %>
+	<div class="flash"><%= params[:flash] %></div>
+	<% end %>
+</div>
