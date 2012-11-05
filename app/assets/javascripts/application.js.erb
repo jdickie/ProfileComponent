@@ -14,3 +14,12 @@
 //= require jquery_ujs
 // Requiring datatables plugin (https://github.com/rweng/jquery-datatables-rails)
 //= require dataTables/jquery.dataTables
+
+var createTable;
+
+createTable = function(el, opts) {
+	if (el !== undefined) {
+		opts = opts || {};
+		el.dataTable(opts);
+	}
+};

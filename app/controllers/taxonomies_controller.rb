@@ -4,6 +4,11 @@ class TaxonomiesController < ApplicationController
     @user = User.find(session[:user_id])
     
     @taxonomies = Taxonomy.find(:all)
+    
+    # defining datatable that goes into createTable call 
+    # (assets/javascripts/application.js.erb)
+    @datatable = "taxonomylist"
+    
     if (params[:id])
       @taxonomy = Taxonomy.find(:all)
     end
@@ -14,7 +19,6 @@ class TaxonomiesController < ApplicationController
   end
   
   def destroy
-    
     @taxonomy = Taxonomy.find(params[:id])
     if @taxonomy 
       name = @taxonomy.name

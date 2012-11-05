@@ -1,28 +1,31 @@
 <% 
 # List of existing users
 %>
-<% @users.each do |t| %>
-	<div class="user">
-	
-		<div class="user_item">
-			<div class="label">
-				<%= label_tag 'Username: ' %>
-			</div>
-			<%= t.username %>
-		</div>
-		<div class="user_item">
-			<div class="label">
-				<%= label_tag 'Role(s): ' %>
-			</div>
-			<%= t.roles.join ' ' %>
-		</div>
-		<% if @user.is? :admin %>
-			<div class="user_item">
+<table id="user_table">
+	<thead>
+		<tr>
+			<th>Username</th>
+			<th>Role(s)</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+	<% @users.each do |t| %>
+		<tr>	
+			<td>
+				<%= t.username %>
+			</td>
+			<td>
+				<%= t.roles.join ' ' %>
+			</td>
+			<% if @user.is? :admin %>
+			<td>
 				<%= link_to "Edit", :controller => 'users', :action => 'edit', :id => t.id %>
-			</div>
-			<div class="user_item">
+				<br/>
 				<%= link_to "Delete", :controller => 'users', :action => 'destroy', :id => t.id %>
-			</div>
-		<% end %>
-	</div>
-<% end %>
+			</td>
+			<% end %>
+		</tr>
+	<% end %>
+	</tbody>
+</table>

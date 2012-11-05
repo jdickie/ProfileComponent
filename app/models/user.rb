@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
   # List roles from least permissions to 
   # highest permissions
   ##########################
-  ROLES = %w[admin superadmin]
+  ROLES = %w[guest admin superadmin]
   
  
   # authenticates the user using base-class methods

@@ -1,5 +1,4 @@
 class AccessController < ApplicationController
-  layout 'admin'
   
   before_filter :confirm_logged_in, :only => [:menu, :index]
   

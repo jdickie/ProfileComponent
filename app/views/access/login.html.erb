@@ -1,3 +1,8 @@
+<% if (params[:flash]) %>
+<div class="flash_messages">
+	<%= params[:flash] %>
+</div>
+<% end %>
 <div class="grid1">
 	<%= form_tag(:action => 'attempt_login') do %>
 		<div class="login_fields">

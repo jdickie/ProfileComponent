@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   def index
     @user = User.find(session[:user_id])
     @users = User.find(:all)
+    
+    @datatable = "user_table"
   end
   
   def edit
