@@ -1,6 +1,7 @@
 class AccessController < ApplicationController
   
   before_filter :confirm_logged_in, :only => [:menu, :index]
+  layout('dashboard')
   
   def index
     render('menu')
@@ -12,9 +13,12 @@ class AccessController < ApplicationController
   end
 
   def login
+    render("menu")
   end
   
   def logout
+    session[:user_id] = nil
+    session[:username] = nil
     flash[:notice] = 'You have been logged out'
     redirect_to(:action => 'menu')
   end
@@ -30,7 +34,7 @@ class AccessController < ApplicationController
       redirect_to(:action => 'menu')
     else
       flash[:notice] = 'Invalid username/password combination'
-      redirect_to(:action => 'login')
+      redirect_to(:action => 'menu')
     end  
   end
   

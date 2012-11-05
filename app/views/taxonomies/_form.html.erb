@@ -1,0 +1,11 @@
+<% semantic_form_for @term do |t| %>
+	<%= t.inputs :name => "Fields" do %>
+	  <%= t.input :name, :label => "Name of the term" %>
+	  <%= t.input :description, :label => "Brief description" %>
+	<% end %>
+	
+	<%= t.actions do %>
+	  <%= t.submit, :as => :button %>
+	  <%= t.cancel, :as => :link %>
+	<% end %>
+<% end %>

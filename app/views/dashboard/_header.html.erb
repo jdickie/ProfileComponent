@@ -4,6 +4,8 @@
 		<span id="user_data">
 			<% if session[:user_id] && session[:username] %>
 				Hello, <%= session[:username] %> | Last access
+				<br/>
+				<%= link_to "Logout", :controller => "access", :action => "logout", :id => session[:user_id] %>
 			<% else %>
 				You are not logged in
 			<% end %>
@@ -17,7 +19,7 @@
 				<li>
 					<%= link_to "Dashboard", root_path %>
 				</li>
-				<% if @user.is? :admin %>
+				<% if can? :create, User %>
 					<li>
 						<%= link_to "User", users_path %>
 					</li>

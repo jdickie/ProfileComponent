@@ -6,16 +6,16 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
 
-admin = User.create([{
+User.create([{
   :username => "admin",
   :email => 'admin@nowhere.com',
   :password => 'VO1VODb0x9',
-  :roles_mask => [1]
+  :roles_mask => 2
 },{
   :username => "regular_user",
   :email => 'user@nowhere.com',
-  :password => 'moxbrm',
-  :roles_mask => [3]
+  :password => 'moxbrm12',
+  :roles_mask => 1
 }])
 
 Taxonomy.create([{

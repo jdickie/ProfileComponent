@@ -28,12 +28,8 @@ class Ability
     # Initialize a user as guest if user not present
     user ||= User.new
     
-    if user.role? == :admin
-      can :manage, :all
-    end
-    
-    if user.role? == :superadmin 
-      can :manage, :all
-    end
+    can :read, :all if user.is? :guest
+    can :manage, :all if user.is? :admin
+    can :manage, :all if user.is? :superadmin
   end
 end

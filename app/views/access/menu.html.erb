@@ -1,17 +1,26 @@
 <div class="main">
 	<div class="grid1">
+		
+		<div class="grid_header">
+			<h2>Introduction</h2>
+		</div>
+		<div class="grid_body">
+			Welcome to ARHU People system
+		</div>
+	</div>
+	<div class="grid2">
 		<% if flash[:notice].blank? == false %>
 			<div class="flashnotice">
 				<%= flash[:notice] %>
 			</div>
 		<% end %>
-		<div class="grid_header">
-			<h2>Users in the System</h2>
-		</div>
-		<div class="grid_body">
-			<%= @users.each do |u| %>
-				
-			<% end %>
-		</div>
+		<% if session[:username] == nil %>
+			<%= render :partial => 'access/login' %>
+		<% else %>
+			<div class="message">
+				<p>Currently logged in as:</p>
+				<h3><%= session[:username] %></h3>
+			</div>
+		<% end %>
 	</div>
 </div>
