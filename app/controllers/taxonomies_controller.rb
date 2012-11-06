@@ -15,7 +15,11 @@ class TaxonomiesController < ApplicationController
   end
   
   def edit
-    @taxonomy = Taxonomy.find(:all)
+    @taxonomy = Taxonomy.find(params[:id])
+    
+    if (@taxonomy == nil) {
+      redirect_to "index", flash[:notice] => "The term was not found"
+    } 
   end
   
   def destroy
@@ -23,9 +27,9 @@ class TaxonomiesController < ApplicationController
     if @taxonomy 
       name = @taxonomy.name
       destroy(@taxonomy)
-      redirect_to "index", :flash => "Successfully deleted " + name
+      redirect_to "index", flash[:notice] => "Successfully deleted " + name
     else 
-      redirect_to "index", :flash => "Error deleting taxonomy term"
+      redirect_to "index", flash[:notice] => "Error deleting taxonomy term"
     end
   end
 end

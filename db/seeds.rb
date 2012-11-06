@@ -9,13 +9,18 @@
 User.create([{
   :username => "admin",
   :email => 'admin@nowhere.com',
-  :password => 'VO1VODb0x9',
+  :password => 'Jupit3r',
   :roles_mask => 2
 },{
-  :username => "regular_user",
+  :username => "guest",
   :email => 'user@nowhere.com',
-  :password => 'moxbrm12',
+  :password => 'V3nus',
   :roles_mask => 1
+},{
+  :username => "superadmin",
+  :email => 'guest@nowhere.com',
+  :password => 'M3rcury',
+  :roles_mask => 3
 }])
 
 Taxonomy.create([{
