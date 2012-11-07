@@ -30,6 +30,13 @@ class Ability
     
     can :read, :all if user.is? :guest
     can :manage, :all if user.is? :admin
-    can :manage, :all if user.is? :superadmin
+    
+    can :assign_roles, User if user.is? [:admin, :profileadmin, :admindepartment]
+    
+    
+    # Creating dynamic loading of permissions from Permission table
+    #
+    #
+    
   end
 end

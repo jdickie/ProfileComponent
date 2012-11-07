@@ -10,7 +10,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121101142444) do
+ActiveRecord::Schema.define(:version => 20121107203631) do
+
+  create_table "permissions", :force => true do |t|
+    t.string   "action"
+    t.string   "subject_class"
+    t.string   "name"
+    t.integer  "subject_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "permission_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "roles_permissions", :id => false, :force => true do |t|
+    t.integer "role_id"
+    t.integer "permission_id"
+  end
 
   create_table "taxonomies", :force => true do |t|
     t.string   "name"
@@ -24,10 +46,13 @@ ActiveRecord::Schema.define(:version => 20121101142444) do
     t.string   "hashed_password"
     t.string   "salt"
     t.string   "email"
-    t.string   "role"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
-    t.integer  "roles_mask"
+  end
+
+  create_table "users_roles", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "role_id"
   end
 
 end

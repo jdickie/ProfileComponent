@@ -1,4 +1,4 @@
-<div class="grid1">
+<div class="grid2">
 	<%= form_tag(:action => 'attempt_login') do %>
 		<div class="login_fields">
 			<div class="field">
@@ -14,4 +14,7 @@
 			<%= submit_tag("Login") %>
 		</div>
 	<% end %>
+</div>
+<div class="grid3">
+	<%= link_to "Login as Guest", :controller => 'access', :action => 'login_guest' %>
 </div>

@@ -38,4 +38,11 @@ class AccessController < ApplicationController
     end  
   end
   
+  def login_guest 
+    session[:user_id] = 2
+    session[:username] = "guest"
+    flash[:notice] = "Logged in as guest"
+    redirect_to(:action => 'menu')
+  end
+  
 end

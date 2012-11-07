@@ -32,12 +32,68 @@ class User < ActiveRecord::Base
   ##########################
   # Defining Roles
   #
-  # List roles from least permissions to 
-  # highest permissions
+  # ROLES Array
+  # List roles as an array. ROLES is
+  # then used  as a cross-reference
+  # with roles_mask using the roles= and roles functions
+  #
+  # Taken from the requirements for the People App
+  #
+  #
   ##########################
-  ROLES = %w[guest admin superadmin]
+  ROLES = ['guest', 'event admin', 'comm viewer', 'comm editor', 'comm admin', 'course viewer', 
+    'course scheduler', 'course admin', 'facility viewer', 'facility editor', 'facility admin', 
+    'appt viewer', 'appt secured', 'appt reviewer', 'appt scheduler', 'appt admin', 'profile', 
+    'profile viewer', 'profile editor', 'profileadmin', 'admindepartment', 'admin']
   
+  def self.admin_index
+    1 & 2**ROLES.length
+  end
  
+  ROLES_DESC = ['Guest account. No permissions except for viewing.',
+    'Event Administrator.', 
+    'Committee Viewer. View all committee info and run report.',
+    'Committee Editor. Edit, View : Committee.',
+    'Committee Administrator. All : Committee.',
+    'Course Viewer. View : Courses',
+    'Course Schedule. Edit, View : Courses',
+    'Course Administrator. All : Courses',
+    'Facility Viewer. View : Facility.',
+    'Facility Editor. Edit, View : Facility.',
+    'Facility Administrator. All : Facility.',
+    'Appointment Viewer. View : Appointment - Non-sensitive',
+    'Appointment Secured. View : Appointment - All',
+    'Appointment Reviewer. Edit, View : Appointment',
+    'Appointment Scheduler. All : Appointment, Contract',
+    'Appointment Administrator. All : Appointment, Contract',
+    'Default User. View, Edit : Profile (Own)',
+    'Profile Viewer. View : Profile',
+    'Profile Editor. Edit, View : Profile',
+    'Profile Administrator. All : Profile',
+    'Departmental Administrator. All : All (Department)',
+    'Administrator. All : All']
+  
+  ######################
+  # Roles-based authentication - defining mask for
+  # roles. Roles act as individual integers, which is
+  # the efficient way of storing them. 
+  ######################
+  def roles=(roles)
+    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
+  end
+
+  def roles
+    ROLES.reject do |r|
+      ((roles_mask || 0) & 2**ROLES.index(r)).zero?
+    end
+  end
+  
+  def roles_desc 
+    roles_id.each do |r|
+      Role.find(r)
+    end
+  end
+  
   # authenticates the user using base-class methods
   def self.authenticate(username="", password="") 
     # find the user by name
@@ -73,25 +129,11 @@ class User < ActiveRecord::Base
     @ability ||= Ability.new(self)
   end
   
-  ######################
-  # Roles-based authentication - defining mask for
-  # roles. Roles act as individual integers, which is
-  # the efficient way of storing them. 
-  ######################
-  def roles=(roles)
-    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
-  end
-
-  def roles
-    ROLES.reject do |r|
-      ((roles_mask || 0) & 2**ROLES.index(r)).zero?
-    end
-  end
-  
   ## 
   # Checks the role against the user
   ##
   def is?(role)
+    # Fetch roles of the user    
     roles.include?(role.to_s)
   end
   

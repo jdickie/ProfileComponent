@@ -4,16 +4,10 @@
 	<%= f.input :email %>
 	
 	<% for role in User::ROLES %>
-		<% 
-			checked = false 
-			if (@user.roles.include?(role.downcase())):
-				checked = true
-			end
-		%>
 	  <%= check_box_tag "user[roles][#{role}]", role, @user.is?(role), 
 		{:name => "user[roles][]"}  %>
 	  <%= label_tag "user_roles_#{role}", role.humanize %>
-		<br />
+	  <br />
 	<% end %>
 	<%= hidden_field_tag "user[roles][]", "" %>
 	
