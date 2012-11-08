@@ -107,21 +107,32 @@ Permission.create([
 Role.create([{
   :name => 'guest',
   :description => "Guest account",
-  :permission_id => nil
 },
 {
   :name => 'profile',
   :description => 'Base user role',
-  :permission_id => [4] 
 },
 {
   :name => 'profile_viewer',
   :description => "Can view all user profiles",
-  :permission_id => [4, 5]
 },
 {
   :name => 'profile_editor',
   :description => "View and edit ALL user profiles",
-  :permission_id => [1, 2, 4, 5]
+},
+{
+  :name => 'admin',
+  :description => "All permissions"
 }
 ])
+
+
+# Connecting the Users to their roles
+UsersRoles.create([{
+  :user_id => 1,
+  :role_id => 4
+}])
+
+RolesPermissions.create([{
+  :role_id => 4
+}])
