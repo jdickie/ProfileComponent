@@ -3,13 +3,11 @@
 	<%= f.input :password %>
 	<%= f.input :email %>
 	
-	<% for role in User::ROLES %>
-	  <%= check_box_tag "user[roles][#{role}]", role, @user.is?(role), 
-		{:name => "user[roles][]"}  %>
-	  <%= label_tag "user_roles_#{role}", role.humanize %>
-	  <br />
+	<% if can :assign_roles, User %>
+		<%= f.inputs :for => :roles do |r| %>
+		  <%= r.input :roles, :as => :check_boxes, :collection => Role.order("id ASC").all %>
+		<% end %>
 	<% end %>
-	<%= hidden_field_tag "user[roles][]", "" %>
 	
 	<%= f.action :submit, :as => :button %>
 <% 

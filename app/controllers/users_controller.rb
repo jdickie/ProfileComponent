@@ -3,6 +3,9 @@ class UsersController < ApplicationController
   
   before_filter :confirm_logged_in
   
+  # adds a before_filter to every action to authorize the action for this user
+  load_and_authorize_resource
+  
   def new
     @user = User.new
   end
@@ -12,6 +15,24 @@ class UsersController < ApplicationController
     @users = User.find(:all)
     
     @datatable = "user_table"
+  end
+  
+  def create(params)
+    @user = User.create({
+      :username => params[:username],
+      :email => params[:email],
+      :password => params[:password]
+    })
+    
+    if (@user)
+      if (params[:roles])
+        @user>>params[:roles]
+        redirect_to "index", flash[:notice] => "Successfully created user #{@user.username}"
+      end
+    else
+      redirect_to "new", flash[:notice] => "Error creating user"
+    end
+   
   end
   
   def edit

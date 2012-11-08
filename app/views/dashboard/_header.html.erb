@@ -6,6 +6,10 @@
 				Hello, <%= session[:username] %> | Last access
 				<br/>
 				<%= link_to "Logout", :controller => "access", :action => "logout", :id => session[:user_id] %>
+				<br/>
+				<p>And you have Permissions for: </p>
+				<% u = User.find(session[:user_id]) %>
+				<%= u.get_roles %>
 			<% else %>
 				You are not logged in
 			<% end %>

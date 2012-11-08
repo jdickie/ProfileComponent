@@ -1,17 +1,17 @@
 require 'digest/sha1'
 class User < ActiveRecord::Base
-  attr_accessible :username, :email
+  attr_accessible :username, :email, :roles
   attr_protected :hashed_password, :salt
+  
+  
   ####################
   # non-db variables #
   ####################
   attr_accessor :password
   
-  
   ####################
   # validations      #
   ####################
-  
   validates :username, :uniqueness => true, :length => { :maximum => 25, :minimum => 4 }
   # validating email to prevent attacks
   validates_format_of :email, :with =>
@@ -25,53 +25,10 @@ class User < ActiveRecord::Base
   # Relationships for User #
   ##########################
   has_and_belongs_to_many :roles
+  accepts_nested_attributes_for :roles
   
   before_save :auto_hash
   after_save :clear_password
-  
-  ##########################
-  # Defining Roles
-  #
-  # ROLES Array
-  # List roles as an array. ROLES is
-  # then used  as a cross-reference
-  # with roles_mask using the roles= and roles functions
-  #
-  # Taken from the requirements for the People App
-  #
-  #
-  ##########################
-  ROLES = ['guest', 'event admin', 'comm viewer', 'comm editor', 'comm admin', 'course viewer', 
-    'course scheduler', 'course admin', 'facility viewer', 'facility editor', 'facility admin', 
-    'appt viewer', 'appt secured', 'appt reviewer', 'appt scheduler', 'appt admin', 'profile', 
-    'profile viewer', 'profile editor', 'profileadmin', 'admindepartment', 'admin']
-  
-  def self.admin_index
-    1 & 2**ROLES.length
-  end
- 
-  ROLES_DESC = ['Guest account. No permissions except for viewing.',
-    'Event Administrator.', 
-    'Committee Viewer. View all committee info and run report.',
-    'Committee Editor. Edit, View : Committee.',
-    'Committee Administrator. All : Committee.',
-    'Course Viewer. View : Courses',
-    'Course Schedule. Edit, View : Courses',
-    'Course Administrator. All : Courses',
-    'Facility Viewer. View : Facility.',
-    'Facility Editor. Edit, View : Facility.',
-    'Facility Administrator. All : Facility.',
-    'Appointment Viewer. View : Appointment - Non-sensitive',
-    'Appointment Secured. View : Appointment - All',
-    'Appointment Reviewer. Edit, View : Appointment',
-    'Appointment Scheduler. All : Appointment, Contract',
-    'Appointment Administrator. All : Appointment, Contract',
-    'Default User. View, Edit : Profile (Own)',
-    'Profile Viewer. View : Profile',
-    'Profile Editor. Edit, View : Profile',
-    'Profile Administrator. All : Profile',
-    'Departmental Administrator. All : All (Department)',
-    'Administrator. All : All']
   
   ######################
   # Roles-based authentication - defining mask for
@@ -80,7 +37,7 @@ class User < ActiveRecord::Base
   ######################
   def add_role(role)
     # add role to the roles enumerable
-    if (class(role) == String)
+    if (role.class == String)
       role = Role.find(role)
     end
     
@@ -91,7 +48,7 @@ class User < ActiveRecord::Base
   
   # Returns an array of :name values from each
   # of the IDs in the roles enumerable
-  def roles
+  def get_roles
     self.roles.map {|r| Role.find(r).to_s }
   end
   
@@ -134,8 +91,10 @@ class User < ActiveRecord::Base
   # Checks the role against the user
   ##
   def is?(role)
+    r = Role.where("name = ?", role)
+    
     # Fetch roles of the user    
-    roles.include?(role.to_s)
+    roles.include?(r)
   end
   
   private 

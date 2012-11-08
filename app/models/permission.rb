@@ -1,5 +1,6 @@
 class Permission < ActiveRecord::Base
   attr_accessible :name, :description, :subject_class, :subject_id, :action
+  accepts_nested_attributes_for :permissions
 
   ###################
   # Relationships 
