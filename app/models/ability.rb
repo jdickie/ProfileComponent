@@ -28,15 +28,18 @@ class Ability
     # Initialize a user as guest if user not present
     user ||= User.new
     
-    can :read, :all if user.is? :guest
-    can :manage, :all if user.is? :admin
-    
-    can :assign_roles, User if user.is? [:admin, :profileadmin, :admindepartment]
-    
-    
     # Creating dynamic loading of permissions from Permission table
     #
     #
+   
     
+    user.roles.each do |role|
+      can do |action, subject_class, subject|
+        role.permissions.find_all_by_action(aliases_for_action(action)).any? do |permission|
+          permission.subject_class == subject_class.to_s &&
+            (subject.nil? || permission.subject_id.nil? || permission.subject_id == subject.id)
+        end
+      end
+    end
   end
 end

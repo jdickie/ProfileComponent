@@ -128,11 +128,7 @@ Role.create([{
 
 
 # Connecting the Users to their roles
-UsersRoles.create([{
-  :user_id => 1,
-  :role_id => 4
-}])
+User.find(1).roles<<Role.find(5)
+admin_role = Role.find(5)
 
-RolesPermissions.create([{
-  :role_id => 4
-}])
+Permission.all.each { |p| admin_role.permissions<<p }

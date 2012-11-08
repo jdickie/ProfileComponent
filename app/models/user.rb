@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
   # Returns an array of :name values from each
   # of the IDs in the roles enumerable
   def get_roles
-    self.roles.map {|r| Role.find(r).to_s }
+    self.roles.map { |r| Role.find(r).name }
   end
   
   # authenticates the user using base-class methods
