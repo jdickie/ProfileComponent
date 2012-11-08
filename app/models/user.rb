@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   ##########################
   # Relationships for User #
   ##########################
-  
+  has_and_belongs_to_many :roles
   
   before_save :auto_hash
   after_save :clear_password
@@ -78,20 +78,21 @@ class User < ActiveRecord::Base
   # roles. Roles act as individual integers, which is
   # the efficient way of storing them. 
   ######################
-  def roles=(roles)
-    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
-  end
-
-  def roles
-    ROLES.reject do |r|
-      ((roles_mask || 0) & 2**ROLES.index(r)).zero?
+  def add_role(role)
+    # add role to the roles enumerable
+    if (class(role) == String)
+      role = Role.find(role)
     end
+    
+    if (self.roles.exists?(role) == false)
+      self.roles<<role
+    end  
   end
   
-  def roles_desc 
-    roles_id.each do |r|
-      Role.find(r)
-    end
+  # Returns an array of :name values from each
+  # of the IDs in the roles enumerable
+  def roles
+    self.roles.map {|r| Role.find(r).to_s }
   end
   
   # authenticates the user using base-class methods
