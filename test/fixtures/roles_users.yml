@@ -1,0 +1,17 @@
+# Adding table entries for roles_users join table
+# (has_and_belongs_to_many join)
+admin_is_admin:
+    user_id: 1
+    role_id: 5
+guest_is_guest:
+    user_id: 2
+    role_id: 1
+foo_is_profile:
+    user_id: 3
+    role_id: 2
+foo_is_profileviewer:
+    user_id: 3
+    role_id: 3
+foo_is_profileeditor:
+    user_id: 3
+    role_id: 4

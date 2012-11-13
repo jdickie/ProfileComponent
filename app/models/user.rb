@@ -35,15 +35,39 @@ class User < ActiveRecord::Base
   # roles. Roles act as individual integers, which is
   # the efficient way of storing them. 
   ######################
-  def add_role(role)
+  
+  # Adding a role via an Array of roles
+  # 
+  # Each element in the array should be either
+  # a String, and ID, or a role object
+  def add_roles(userroles=[])
     # add role to the roles enumerable
-    if (role.class == String)
-      role = Role.find(role)
-    end
+    userroles.each do |role|
+      if (role.class == String)
+        role = Role.find_by_name(role)
+      elsif (role.class == Integer)
+        role = Role.find(role)
+      end
     
-    if (self.roles.exists?(role) == false)
-      self.roles<<role
-    end  
+      (roles<<role) unless self.roles.include?(role)
+    end
+  end
+  # Removes roles via an Array
+  #
+  # Each element in the array should be either
+  # a String, and ID, or a role object
+  def remove_roles(delroles=[])
+    # go through arrays values and delete
+    # each item
+    delroles.each do |role|
+      if (role.class == String)
+        role = Role.find_by_name(role)
+      elsif (role.class == Integer)
+        role = Role.find(role)
+      end
+      
+      self.roles.delete(role) if self.roles.include?(role)
+    end
   end
   
   # Returns an array of :name values from each
@@ -91,7 +115,7 @@ class User < ActiveRecord::Base
   # Checks the role against the user
   ##
   def is?(role)
-    r = Role.where("name = ?", role)
+    r = Role.find_by_name(role)
     
     # Fetch roles of the user    
     roles.include?(r)

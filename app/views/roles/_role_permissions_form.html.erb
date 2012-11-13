@@ -1,0 +1,32 @@
+<% 
+# Generating a form to dynamically generate new roles and
+# permissions for users
+# 
+# TODO: May need to go in its own action controller and view
+
+%>
+<table id="permissions_table" class="permissions">
+	<thead>
+		<th>Role</th>
+		<% @permissions.each do |p| %>
+			<th><%= p.name %></th>
+		<% end %>
+	</thead>
+	<tbody>
+		<% @roles.each do |r| %>
+			<%= form_for r do |f| %>
+				<tr>
+					<td><%= r.name %></td>
+					<% @permissions.each do |t| %>
+						<td>
+							<%= check_box_tag("permissions", t.name, r.permissions.include?(t), {:multiple => true}) %>
+						</td>
+					<% end %>
+					<td>
+						<%= f.submit "Save" %>
+					</td>
+				</tr>
+			<% end %>
+		<% end %>
+	</tbody>
+</table>

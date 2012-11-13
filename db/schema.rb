@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(:version => 20121108204508) do
 
   create_table "permissions", :force => true do |t|
-    t.string   "action"
-    t.string   "subject_class"
+    t.string   "action",        :null => false
+    t.string   "subject_class", :null => false
     t.string   "name"
     t.integer  "subject_id"
     t.datetime "created_at",    :null => false

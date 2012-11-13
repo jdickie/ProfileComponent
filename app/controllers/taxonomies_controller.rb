@@ -17,9 +17,9 @@ class TaxonomiesController < ApplicationController
   def edit
     @taxonomy = Taxonomy.find(params[:id])
     
-    if (@taxonomy == nil) {
+    if (@taxonomy == nil)
       redirect_to "index", flash[:notice] => "The term was not found"
-    } 
+    end
   end
   
   def destroy

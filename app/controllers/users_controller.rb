@@ -4,13 +4,16 @@ class UsersController < ApplicationController
   before_filter :confirm_logged_in
   
   # adds a before_filter to every action to authorize the action for this user
-  load_and_authorize_resource
+  load_and_authorize_resource :unless => :index
   
   def new
     @user = User.new
   end
   
   def index
+    authorize! :view_own, User
+    authorize! :view_all, User
+    
     @user = User.find(session[:user_id])
     @users = User.find(:all)
     
@@ -18,6 +21,11 @@ class UsersController < ApplicationController
   end
   
   def create(params)
+    authorize! :view_all, User
+    authorize! :assign_roles, User
+    authorize! :create, User
+    
+    
     @user = User.create({
       :username => params[:username],
       :email => params[:email],
@@ -36,10 +44,15 @@ class UsersController < ApplicationController
   end
   
   def edit
+    authorize! :view_all, User
+    
+    @roles = Role.find(:all)
     @user = User.find(params[:id])
   end
   
   def destroy
+    authorize! :destroy, User
+    
     @user = User.find(:id)
     @user.delete()
   end
@@ -68,4 +81,8 @@ class UsersController < ApplicationController
     end
   end
   
+  def edit_permissions
+    @roles = Role.find(:all)
+    @permissions = Permission.find(:all)
+  end
 end

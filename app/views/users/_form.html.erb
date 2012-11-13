@@ -1,15 +1,25 @@
-<%= semantic_form_for @user do |f| %>
-	<%= f.input :username %>
-	<%= f.input :password %>
-	<%= f.input :email %>
+<%= form_for @user do |f| %>
+	<%= f.label :username, "Username" %>
+	<%= f.text_field(:username) %>
+	<%= f.label :password, "Password" %>
+	<%= f.text_field :password %>
+	<%= f.label :email, "Email" %>
+	<%= f.text_field :email %>
 	
-	<% if can :assign_roles, User %>
-		<%= f.inputs :for => :roles do |r| %>
-		  <%= r.input :roles, :as => :check_boxes, :collection => Role.order("id ASC").all %>
+	<% if can? :assign_roles, User %>
+		<% @roles.each do |r| %>
+			<% 
+				checked = false
+				if (@user.roles.include?(r))
+					checked = true
+				end
+			%>
+			<%= f.label :roles, r.name %>
+		  <%= check_box_tag("roles", r.name, checked) %>
 		<% end %>
 	<% end %>
 	
-	<%= f.action :submit, :as => :button %>
+	<%= f.submit %>
 <% 
 	# end of user form
 	end 

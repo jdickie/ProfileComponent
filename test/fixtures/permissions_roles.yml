@@ -1,0 +1,6 @@
+manage_for_admin:
+    role_id: 5
+    permission_id: 1
+viewownuser_for_guest:
+    role_id: 1
+    permission_id: 7

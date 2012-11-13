@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Profile::Users</title>
+  <title>Profile</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= stylesheet_link_tag	"users", :media => "all" %>
   <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag "users" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 <%= render :partial => 'dashboard/header' %>
-<!-- Using layouts/users.html.erb -->
-
+<>
 <%= yield %>
 
 </body>

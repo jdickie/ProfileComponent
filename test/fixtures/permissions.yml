@@ -1,0 +1,74 @@
+# Test fixtures for Permission model
+#
+manage:
+    id: 1
+    action: manage
+    subject_class: all
+    name: Administrator global priviledge
+    subject_id: nil
+assign_roles:
+    id: 2
+    action:  assign_roles
+    subject_class:  User
+    name:  Assign roles to users
+    subject_id:  nil
+create_user:
+    id: 3
+    action:  create
+    subject_class:  User
+    name:  Create users
+    subject_id:  nil
+edit_own_user:
+    id: 4
+    action:  edit_own
+    subject_class:  User
+    name:  Edit users
+    subject_id:  nil
+edit_all_user:
+    id: 5
+    action:  edit_all
+    subject_class:  User
+    name:  Edit ALL users
+    subject_id:  nil
+destroy_user:
+    id: 6
+    action:  destroy
+    subject_class:  User
+    name:  Delete users
+    subject_id:  nil
+view_own_user:
+    id: 7
+    action:  view_own
+    subject_class:  User
+    name:  View own user profile
+    subject_id:  nil
+view_all_user:
+    id: 8
+    action:  view_all
+    subject_class:  User
+    name:  View ALL user profiles
+    subject_id:  nil
+create_taxonomy:
+    id: 9
+    action:  create
+    subject_class:  Taxonomy
+    name:  Create taxonomy terms
+    subject_id:  nil
+edit_taxonomy:
+    id: 10
+    action:  edit
+    subject_class:  Taxonomy
+    name:  Edit taxonomy terms
+    subject_id:  nil
+destroy_taxonomy:
+    id: 11
+    action:  destroy
+    subject_class:  Taxonomy
+    name:  Delete taxonomy terms
+    subject_id:  nil
+view_taxonomy:
+    id: 12
+    action:  view_all
+    subject_class:  Taxonomy
+    name:  View taxonomy terms
+    subject_id:  nil
