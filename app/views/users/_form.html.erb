@@ -5,7 +5,7 @@
 	<%= f.text_field :password %>
 	<%= f.label :email, "Email" %>
 	<%= f.text_field :email %>
-	
+	<br/>
 	<% if can? :assign_roles, User %>
 		<% @roles.each do |r| %>
 			<% 
@@ -16,6 +16,7 @@
 			%>
 			<%= f.label :roles, r.name %>
 		  <%= check_box_tag("roles", r.name, checked) %>
+			<br/>
 		<% end %>
 	<% end %>
 	

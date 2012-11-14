@@ -7,24 +7,30 @@ class UsersController < ApplicationController
   load_and_authorize_resource :unless => :index
   
   def new
+    authorize! :create, User
+    
     @user = User.new
   end
   
   def index
-    authorize! :view_own, User
-    authorize! :view_all, User
+    if(authorize!(:view_own, User) && authorize!(:view_all, User))
+      @user = User.find(session[:user_id])
+      @users = User.find(:all)
     
-    @user = User.find(session[:user_id])
-    @users = User.find(:all)
-    
-    @datatable = "user_table"
+      @datatable = "user_table"
+      flash[:notice] = "authorized access"
+    else
+      flash[:notice] = "Unauthorized access"
+      redirect_to :controller => "dashboard", :action => "index"
+    end
   end
   
   def create(params)
-    authorize! :view_all, User
-    authorize! :assign_roles, User
-    authorize! :create, User
-    
+    unless(authorize!(:view_all, User) &&
+      authorize!(:assign_roles, User) &&
+      authorize!(:create, User))
+      redirect_to "index", flash[:notice] => "You dont have permissions to do that, sorry."
+    end
     
     @user = User.create({
       :username => params[:username],
@@ -44,14 +50,19 @@ class UsersController < ApplicationController
   end
   
   def edit
-    authorize! :view_all, User
+    
+    unless authorize! :view_all, User
+      redirect_to "index", flash[:notice] => "You dont have permissions to do that, sorry."
+    end
     
     @roles = Role.find(:all)
     @user = User.find(params[:id])
   end
   
   def destroy
-    authorize! :destroy, User
+    unless authorize! :destroy, User
+      redirect_to "index", flash[:notice] => "You dont have permissions to do that, sorry."
+    end
     
     @user = User.find(:id)
     @user.delete()
@@ -82,6 +93,9 @@ class UsersController < ApplicationController
   end
   
   def edit_permissions
+    unless(authorize!(:view_all, User) && authorize!(:assign_roles, User) && authorize!(:edit_all, User))
+      redirect_to "index", flash[:notice] => "You dont have permissions to do that, sorry."
+    end
     @roles = Role.find(:all)
     @permissions = Permission.find(:all)
   end

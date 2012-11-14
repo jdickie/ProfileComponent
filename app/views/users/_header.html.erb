@@ -1,9 +1,11 @@
-<div class="navbar">
-	<ul>
-	<% if can? :assign_roles, User %>
-		<li>
-			<%= link_to "Manage Roles", roles_path %>
-		</li>
-	<% end %>
-	</ul>
+<div class="header">
+	<div class="navbar">
+		<ul>
+		<% if can? :assign_roles, User %>
+			<li>
+				<%= link_to "Manage Roles", roles_path %>
+			</li>
+		<% end %>
+		</ul>
+	</div>
 </div>

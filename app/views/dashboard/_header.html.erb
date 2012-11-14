@@ -30,7 +30,7 @@
 	<% end %>
 </div>
 <div class="message_alerts">
-	<% if (params[:flash]): %>
-	<div class="flash"><%= params[:flash] %></div>
+	<% if (flash[:notice]): %>
+	<div class="flash"><%= flash[:notice] %></div>
 	<% end %>
 </div>
